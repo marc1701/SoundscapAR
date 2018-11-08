@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var mechanicalRatingText: UITextField!
     
     @IBOutlet weak var MLDataButton: UIButton!
+    @IBOutlet weak var barrierButton: UIButton!
+    @IBOutlet weak var audioSourceButton: UIButton!
+    
     
     // AVAudioSession is an object that communicates to the low-level system how audio will be used in the app
     let audioSession = AVAudioSession()
@@ -75,6 +78,8 @@ class ViewController: UIViewController {
         self.MLDataView.isHidden = true
         self.MLDataView.layer.cornerRadius = 8.0
         self.MLDataButton.layer.cornerRadius = 8.0
+        self.audioSourceButton.layer.cornerRadius = 8.0
+        self.barrierButton.layer.cornerRadius = 8.0
         
         /// AUDIO ///
         self.deviceInput = self.audioEngine.inputNode
@@ -94,6 +99,7 @@ class ViewController: UIViewController {
         self.startAudioEngine()
         
         
+        
         /// AR ///
         // add node to scene
         let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a")
@@ -102,7 +108,7 @@ class ViewController: UIViewController {
         let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a")
         self.binauralNodes.append(synthNode)
         
-        // TEST
+        // test barrier node
         self.sceneRootNode.addChildNode(self.testBarrierNode)
         ///////
         
@@ -138,10 +144,18 @@ class ViewController: UIViewController {
     @IBAction func viewTappedOnce(_ sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: self.sceneView)
         let hitTestResults = self.sceneView.hitTest(tapLocation)
-        
+//
         guard let node = hitTestResults.first?.node as? ARBinauralAudioNode
             else { return }
         node.audioToggle()
+        
+//
+//        if let node = hitTestResults.first?.node as? ARBinauralAudioNode {
+//            node.audioToggle()
+//        } else if let node = hitTestResults.first?.node as? ARAcousticBarrierNode {
+//            node.audioHidden = !node.audioHidden
+//            // of course now there's no way of bringing it back!
+//        }
     }
     
     
@@ -152,5 +166,17 @@ class ViewController: UIViewController {
             self.MLDataView.isHidden = true
         }
     }
+    
+    @IBAction func barrierButtonPressed(_ sender: UIButton) {
+        // there'll probably only ever be the one node in the present app config
+        self.testBarrierNode.audioHidden = !self.testBarrierNode.audioHidden
+    }
+    
+    
+    @IBAction func audioButtonPressed(_ sender: UIButton) {
+        // toggle play/stop here?
+        // open up an overlay view with some object options?
+    }
+    
     
 }

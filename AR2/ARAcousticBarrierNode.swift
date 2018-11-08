@@ -12,6 +12,13 @@ import AVFoundation
 
 class ARAcousticBarrierNode: SCNNode {
     
+    var audioHidden = false {
+        willSet {
+            self.isHidden = newValue
+            self.lowPassFilterParameters.frequency = 20000 // effectively disable the filter
+        }
+    }
+    
     // can we connect from outside the object directly into this filter?
     let lowPassFilter = AVAudioUnitEQ()
     var lowPassFilterParameters: AVAudioUnitEQFilterParameters!
@@ -119,7 +126,12 @@ class ARAcousticBarrierNode: SCNNode {
 
     // this is the one to use to update everything outside the class
     func updateAudioProcessing(forPositionOf camera: ARCamera) {
-        self.alterFilterCutoff(givenPositionOf: camera)
+        
+        // if the node is not hidden
+        if !self.isHidden {
+            self.alterFilterCutoff(givenPositionOf: camera)
+        }
+        
         self.panValue = self.calculatePanValue(forPositionOf: camera)
     }
     
