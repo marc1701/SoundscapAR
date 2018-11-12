@@ -10,8 +10,9 @@ import UIKit
 import ARKit
 import CoreML
 import aubio
+import BLEHeadtracker
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, BLETrackerReceiverDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var MLDataView: UIView!
@@ -28,6 +29,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var barrierButton: UIButton!
     @IBOutlet weak var audioSourceButton: UIButton!
     
+    var headTracker : BLETrackerReceiver!   // Instance of the BLE tracker
+    var headTrackerIsConnected = false
+    var headTrackerYaw : Double?
     
     // AVAudioSession is an object that communicates to the low-level system how audio will be used in the app
     let audioSession = AVAudioSession()
@@ -75,6 +79,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /// HEAD TRACKER ///
+        self.headTracker = BLETrackerReceiver(delegate: self)
+        self.headTracker.resetCalibration()
+        self.headTracker.resetHeading()
+        self.headTracker.setTrackerMountingPosition(position: .FrontOfHead)
+        
+        /// VISUAL INTERFACE ///
         self.MLDataView.isHidden = true
         self.MLDataView.layer.cornerRadius = 8.0
         self.MLDataButton.layer.cornerRadius = 8.0
@@ -176,6 +187,26 @@ class ViewController: UIViewController {
     @IBAction func audioButtonPressed(_ sender: UIButton) {
         // toggle play/stop here?
         // open up an overlay view with some object options?
+    }
+    
+    
+    // headtracker protocol funcs
+    func updateStatus(status: String, updateRate: String, validData: Bool, isCalibrating: Bool) {
+        self.headTrackerIsConnected = validData
+        if validData == false {
+            self.headTrackerYaw = nil
+        }
+    }
+    
+    
+    func updateRawData(id: Int32, trackerRawData : TrackerRawDataType) {
+//        print(trackerRawData.voltage)
+    }
+    
+    
+    func updateAttitude(yaw: Double, pitch: Double, roll: Double) {
+        self.updateListenerOrientation(withAngles: (yaw, pitch, roll), inEnvironment: self.audioEnvironment)
+        self.headTrackerYaw = yaw
     }
     
     

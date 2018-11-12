@@ -16,7 +16,12 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         guard let camera = self.sceneView.session.currentFrame?.camera else { return }
         
 //        updateSourcePosition(withPositionOf: boxNode, forSource: audioPlayer)
-        updateListenerPositionAndOrientation(withPositionOf: camera, inEnvironment: self.audioEnvironment)
+        self.updateListenerPosition(withPositionOf: camera, inEnvironment: self.audioEnvironment)
+        
+        // if head tracker is not connected, use angles from device
+        if !self.headTrackerIsConnected {
+            self.updateListenerOrientation(withOrientationOf: camera, inEnvironment: self.audioEnvironment)
+        }
         
         // light source intensity follows ambient light intensity
         guard let lightIntensityEstimate = sceneView.session.currentFrame?.lightEstimate?.ambientIntensity,
@@ -28,6 +33,6 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         
         
         // will have to keep an array of these and update each in turn
-        self.testBarrierNode.updateAudioProcessing(forPositionOf: camera)
+        self.testBarrierNode.updateAudioProcessing(forPositionOf: camera, withHeadTrackerYaw: self.headTrackerYaw)
     }
 }

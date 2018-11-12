@@ -1,0 +1,4 @@
+framework module BLEHeadtracker {
+  header "BLEHeadtracker-Swift.h"
+  requires objc
+}

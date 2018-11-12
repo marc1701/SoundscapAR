@@ -113,24 +113,33 @@ extension ViewController {
     }
     
     
-    func updateSourcePosition(withPositionOf object: SCNNode, forSource audioSource: AVAudioPlayerNode)  {
-        audioSource.position.x = object.worldPosition.x
-        audioSource.position.y = object.worldPosition.y
-        audioSource.position.z = object.worldPosition.z
-    }
+//    func updateSourcePosition(withPositionOf object: SCNNode, forSource audioSource: AVAudioPlayerNode)  {
+//        audioSource.position.x = object.worldPosition.x
+//        audioSource.position.y = object.worldPosition.y
+//        audioSource.position.z = object.worldPosition.z
+//    }
     
     
-    func updateListenerPositionAndOrientation(withPositionOf camera: ARCamera, inEnvironment audioEnvironment: AVAudioEnvironmentNode) {
+    func updateListenerPosition(withPositionOf camera: ARCamera, inEnvironment audioEnvironment: AVAudioEnvironmentNode) {
         audioEnvironment.listenerPosition.x = camera.transform.columns.3.x
         audioEnvironment.listenerPosition.y = camera.transform.columns.3.y
         audioEnvironment.listenerPosition.z = camera.transform.columns.3.z
-        
-        // yaw and roll are reversed in AVAudioEnvironment
+    }
+    
+    
+    func updateListenerOrientation(withOrientationOf camera: ARCamera, inEnvironment audioEnvironment: AVAudioEnvironmentNode) {
         audioEnvironment.listenerAngularOrientation.roll = self.radiansToDegrees(radianValue: -camera.eulerAngles.z)
         audioEnvironment.listenerAngularOrientation.pitch = self.radiansToDegrees(radianValue: camera.eulerAngles.x)
         audioEnvironment.listenerAngularOrientation.yaw = self.radiansToDegrees(radianValue: -camera.eulerAngles.y)
     }
     
+    
+    func updateListenerOrientation(withAngles angles: (yaw: Double, pitch: Double, roll: Double), inEnvironment audioEnvironment: AVAudioEnvironmentNode) {
+        audioEnvironment.listenerAngularOrientation.roll = Float(angles.roll)
+        audioEnvironment.listenerAngularOrientation.pitch = Float(angles.pitch)
+        audioEnvironment.listenerAngularOrientation.yaw = Float(angles.yaw)
+    }
+
     
     func radiansToDegrees(radianValue: Float) -> Float {
         return Float(radianValue * 180.0 / Float.pi)

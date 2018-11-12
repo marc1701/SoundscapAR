@@ -17,6 +17,8 @@
 		9E5BC50C215BE7970060B6D8 /* ARAcousticBarrierNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */; };
 		9E6496B1214130FA00B33DE4 /* cubeScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 9E6496B0214130FA00B33DE4 /* cubeScene.scn */; };
 		9E6496B62141736700B33DE4 /* synth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E6496B52141736700B33DE4 /* synth.m4a */; };
+		9E7021A12199D49200D7979A /* BLEHeadtracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7021A02199D49200D7979A /* BLEHeadtracker.framework */; };
+		9E7021A32199D4AE00D7979A /* BLEHeadtracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7021A02199D49200D7979A /* BLEHeadtracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */; };
 		9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E88F5D3212C58DE00ECAD79 /* drums.m4a */; };
 		9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9D389D20DD6BD600500D82 /* AppDelegate.swift */; };
@@ -31,6 +33,20 @@
 		9EE03B85219455FA0015F27B /* MFCC_SVC.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B83219455FA0015F27B /* MFCC_SVC.mlmodel */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9E7021A42199D4AE00D7979A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9E7021A32199D4AE00D7979A /* BLEHeadtracker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		9E0FBCE021949A3F00E35FC4 /* audio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_icon.png; sourceTree = "<group>"; };
 		9E0FBCE121949A3F00E35FC4 /* ML_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ML_icon.png; sourceTree = "<group>"; };
@@ -42,6 +58,7 @@
 		9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAcousticBarrierNode.swift; sourceTree = "<group>"; };
 		9E6496B0214130FA00B33DE4 /* cubeScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cubeScene.scn; sourceTree = "<group>"; };
 		9E6496B52141736700B33DE4 /* synth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = synth.m4a; sourceTree = "<group>"; };
+		9E7021A02199D49200D7979A /* BLEHeadtracker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BLEHeadtracker.framework; sourceTree = "<group>"; };
 		9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioFuncs.swift; sourceTree = "<group>"; };
 		9E88F5D3212C58DE00ECAD79 /* drums.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.m4a; sourceTree = "<group>"; };
 		9E9D389A20DD6BD600500D82 /* AR2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E20E1882191E7DC002E0F48 /* Accelerate.framework in Frameworks */,
+				9E7021A12199D49200D7979A /* BLEHeadtracker.framework in Frameworks */,
 				9EE03B7F21944F860015F27B /* aubio.framework in Frameworks */,
 				9E20E1892191E7DC002E0F48 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -103,6 +121,7 @@
 		9E20E1852191E7DC002E0F48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9E7021A02199D49200D7979A /* BLEHeadtracker.framework */,
 				9EE03B7E21944F860015F27B /* aubio.framework */,
 				9E20E1862191E7DC002E0F48 /* Accelerate.framework */,
 				9E20E1872191E7DC002E0F48 /* AudioToolbox.framework */,
@@ -168,6 +187,7 @@
 				9E9D389620DD6BD600500D82 /* Sources */,
 				9E9D389720DD6BD600500D82 /* Frameworks */,
 				9E9D389820DD6BD600500D82 /* Resources */,
+				9E7021A42199D4AE00D7979A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,6 +210,11 @@
 				TargetAttributes = {
 					9E9D389920DD6BD600500D82 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

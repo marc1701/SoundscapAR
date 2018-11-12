@@ -125,14 +125,24 @@ class ARAcousticBarrierNode: SCNNode {
     
 
     // this is the one to use to update everything outside the class
-    func updateAudioProcessing(forPositionOf camera: ARCamera) {
-        
+//    func updateAudioProcessing(forPositionOf camera: ARCamera) {
+//        
+//        // if the node is not hidden
+//        if !self.isHidden {
+//            self.alterFilterCutoff(givenPositionOf: camera)
+//        }
+//        
+//        self.panValue = self.calculatePanValue(forPositionOf: camera)
+//    }
+    
+    
+    func updateAudioProcessing(forPositionOf camera: ARCamera, withHeadTrackerYaw yaw: Double? = nil) {
         // if the node is not hidden
         if !self.isHidden {
             self.alterFilterCutoff(givenPositionOf: camera)
         }
         
-        self.panValue = self.calculatePanValue(forPositionOf: camera)
+        self.panValue = self.calculatePanValue(forPositionOf: camera, withHeadTrackerYaw: yaw)
     }
     
     
@@ -143,7 +153,15 @@ class ARAcousticBarrierNode: SCNNode {
     }
     
     
-    func calculatePanValue(forPositionOf camera: ARCamera) -> Float {
+    func calculatePanValue(forPositionOf camera: ARCamera, withHeadTrackerYaw yaw: Double? = nil) -> Float {
+        let yawVal : Float
+        
+        if yaw == nil {
+            yawVal = camera.eulerAngles.y
+        } else {
+            yawVal = Float(yaw!)
+        }
+        
         // what will we ever use it for in adult life?
         let distanceOppositeSide = (self.position.x - camera.transform.columns.3.x)
         let distanceAdjacentSide = (self.position.z - camera.transform.columns.3.z)
@@ -151,7 +169,7 @@ class ARAcousticBarrierNode: SCNNode {
         let cameraToSelfAngle = atan2(distanceOppositeSide, distanceAdjacentSide)
         
         // do a bunch of fudges to map the angles to a more useful range
-        var relativeAngleGivenCameraRotation = cameraToSelfAngle + camera.eulerAngles.y
+        var relativeAngleGivenCameraRotation = cameraToSelfAngle + yawVal
         if relativeAngleGivenCameraRotation < -Float.pi {
             relativeAngleGivenCameraRotation += 2*Float.pi
         }

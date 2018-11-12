@@ -24,6 +24,11 @@
 	<string>Camera needed for AR experience</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone will be used to monitor your local acoustic environment</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

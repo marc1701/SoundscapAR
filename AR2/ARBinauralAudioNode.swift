@@ -24,7 +24,7 @@ class ARBinauralAudioNode: SCNNode {
     override var position: SCNVector3 {
         willSet {
             self.audioPlayer.position = AVAudio3DPoint(x: newValue.x, y: newValue.y, z: newValue.z)
-            // super.position = newValue // possibly not needed
+            super.position = newValue // possibly not needed
         }
     }
     
