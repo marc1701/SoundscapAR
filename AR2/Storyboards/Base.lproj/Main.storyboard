@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-G2-Ayo">
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-G2-Ayo" customClass="VirtualObjectARView" customModule="AR2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </arscnView>
                             <view opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBS-PU-dJu">
@@ -146,20 +146,33 @@
                                     <action selector="audioButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fJ4-et-eQa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Move camera to detect surface" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WK-d0-lbb">
+                                <rect key="frame" x="363" y="20" width="284" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="SUw-v0-j44"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="eBS-PU-dJu" firstAttribute="top" secondItem="keF-HP-CDI" secondAttribute="top" constant="20" id="1d9-jm-opN"/>
+                            <constraint firstItem="1WK-d0-lbb" firstAttribute="top" secondItem="eBS-PU-dJu" secondAttribute="top" id="3Xq-W7-1zJ"/>
                             <constraint firstItem="keF-HP-CDI" firstAttribute="bottom" secondItem="mQw-G2-Ayo" secondAttribute="bottom" id="9OM-JG-CkO"/>
                             <constraint firstItem="3zu-2v-MmP" firstAttribute="leading" secondItem="gwl-hj-7pP" secondAttribute="leading" id="AHL-nk-g1Q"/>
                             <constraint firstItem="mQw-G2-Ayo" firstAttribute="leading" secondItem="keF-HP-CDI" secondAttribute="leading" id="Aru-dQ-Kvf"/>
                             <constraint firstItem="keF-HP-CDI" firstAttribute="bottom" secondItem="1Xm-8U-uQY" secondAttribute="bottom" constant="20" id="Gel-SU-eWK"/>
                             <constraint firstItem="keF-HP-CDI" firstAttribute="trailing" secondItem="1Xm-8U-uQY" secondAttribute="trailing" constant="20" id="GrV-tX-AGH"/>
+                            <constraint firstItem="1WK-d0-lbb" firstAttribute="leading" secondItem="eBS-PU-dJu" secondAttribute="trailing" constant="8" id="IsR-3w-u7t"/>
                             <constraint firstItem="eBS-PU-dJu" firstAttribute="leading" secondItem="keF-HP-CDI" secondAttribute="leading" constant="20" id="LAW-E0-Tl4"/>
                             <constraint firstItem="1Xm-8U-uQY" firstAttribute="top" secondItem="gwl-hj-7pP" secondAttribute="bottom" constant="8" id="LmG-rN-Ik2"/>
                             <constraint firstItem="keF-HP-CDI" firstAttribute="trailing" secondItem="mQw-G2-Ayo" secondAttribute="trailing" id="TlW-6p-h6s"/>
                             <constraint firstItem="1Xm-8U-uQY" firstAttribute="bottom" secondItem="eBS-PU-dJu" secondAttribute="bottom" id="Vdz-Oy-s6W"/>
+                            <constraint firstItem="keF-HP-CDI" firstAttribute="trailing" secondItem="1WK-d0-lbb" secondAttribute="trailing" constant="20" id="Wl6-n4-3Oe"/>
                             <constraint firstItem="3zu-2v-MmP" firstAttribute="trailing" secondItem="gwl-hj-7pP" secondAttribute="trailing" id="WwH-Tx-Kvd"/>
                             <constraint firstItem="keF-HP-CDI" firstAttribute="bottom" secondItem="eBS-PU-dJu" secondAttribute="bottom" constant="20" id="Zf1-0V-QJd"/>
                             <constraint firstItem="keF-HP-CDI" firstAttribute="trailing" secondItem="3zu-2v-MmP" secondAttribute="trailing" constant="20" id="cLg-rG-uU8"/>
@@ -176,6 +189,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="ARFeedbackLabel" destination="1WK-d0-lbb" id="emx-Ro-Msd"/>
                         <outlet property="MLDataButton" destination="1Xm-8U-uQY" id="mY9-Ak-yct"/>
                         <outlet property="MLDataView" destination="eBS-PU-dJu" id="NeI-gu-xbc"/>
                         <outlet property="audioSourceButton" destination="3zu-2v-MmP" id="2jL-5w-h0U"/>

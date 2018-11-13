@@ -25,6 +25,14 @@
 		9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A420DD6BD600500D82 /* Assets.xcassets */; };
 		9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */; };
 		9EAA31C72140228100944452 /* ARBinauralAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */; };
+		9EBA9D63219AD9C800C769B6 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D61219AD9C800C769B6 /* FocusSquareSegment.swift */; };
+		9EBA9D64219AD9C800C769B6 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D62219AD9C800C769B6 /* FocusSquare.swift */; };
+		9EBA9D67219ADAB400C769B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D66219ADAB400C769B6 /* Utilities.swift */; };
+		9EBA9D69219ADD7E00C769B6 /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D68219ADD7E00C769B6 /* VirtualObjectARView.swift */; };
+		9EBA9D6D219ADEE300C769B6 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D6B219ADEE300C769B6 /* VirtualObject.swift */; };
+		9EBA9D6E219ADEE300C769B6 /* VirtualObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D6C219ADEE300C769B6 /* VirtualObjectLoader.swift */; };
+		9EBA9D72219AE19500C769B6 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D71219AE19500C769B6 /* VirtualObjectInteraction.swift */; };
+		9EBA9D74219AE2BD00C769B6 /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D73219AE2BC00C769B6 /* ThresholdPanGesture.swift */; };
 		9EE03B7F21944F860015F27B /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03B7E21944F860015F27B /* aubio.framework */; };
 		9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */; };
 		9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */; };
@@ -52,6 +60,14 @@
 		9E9D38A720DD6BD600500D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E9D38A920DD6BD600500D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBinauralAudioNode.swift; sourceTree = "<group>"; };
+		9EBA9D61219AD9C800C769B6 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		9EBA9D62219AD9C800C769B6 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		9EBA9D66219ADAB400C769B6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		9EBA9D68219ADD7E00C769B6 /* VirtualObjectARView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
+		9EBA9D6B219ADEE300C769B6 /* VirtualObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		9EBA9D6C219ADEE300C769B6 /* VirtualObjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectLoader.swift; sourceTree = "<group>"; };
+		9EBA9D71219AE19500C769B6 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
+		9EBA9D73219AE2BC00C769B6 /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
 		9EE03B7E21944F860015F27B /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = aubio.framework; sourceTree = "<group>"; };
 		9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalAudioAnalyser.swift; sourceTree = "<group>"; };
 		9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MFCC_Scaler.mlmodel; sourceTree = "<group>"; };
@@ -142,20 +158,68 @@
 		9E9D389C20DD6BD600500D82 /* AR2 */ = {
 			isa = PBXGroup;
 			children = (
-				9E6496B22141310900B33DE4 /* Media */,
+				9EBA9D5F2199EA2B00C769B6 /* Storyboards */,
 				9E9D389D20DD6BD600500D82 /* AppDelegate.swift */,
 				9E9D389F20DD6BD600500D82 /* ViewController.swift */,
-				9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */,
-				9E20E18E2191E910002E0F48 /* MovingAverage.swift */,
-				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */,
-				9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */,
 				9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */,
 				9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */,
-				9E9D38A120DD6BD600500D82 /* Main.storyboard */,
-				9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */,
 				9E9D38A920DD6BD600500D82 /* Info.plist */,
+				9EBA9D65219AD9D200C769B6 /* Pre-existing Classes */,
+				9EBA9D60219AD81E00C769B6 /* Custom Classes */,
+				9E6496B22141310900B33DE4 /* Media */,
 			);
 			path = AR2;
+			sourceTree = "<group>";
+		};
+		9EBA9D5F2199EA2B00C769B6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				9E9D38A120DD6BD600500D82 /* Main.storyboard */,
+				9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9EBA9D60219AD81E00C769B6 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */,
+				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */,
+				9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */,
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		9EBA9D65219AD9D200C769B6 /* Pre-existing Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9EBA9D70219ADEF000C769B6 /* Virtual Object */,
+				9EBA9D6A219ADECF00C769B6 /* Focus Square */,
+				9EBA9D73219AE2BC00C769B6 /* ThresholdPanGesture.swift */,
+				9E20E18E2191E910002E0F48 /* MovingAverage.swift */,
+				9EBA9D66219ADAB400C769B6 /* Utilities.swift */,
+			);
+			path = "Pre-existing Classes";
+			sourceTree = "<group>";
+		};
+		9EBA9D6A219ADECF00C769B6 /* Focus Square */ = {
+			isa = PBXGroup;
+			children = (
+				9EBA9D62219AD9C800C769B6 /* FocusSquare.swift */,
+				9EBA9D61219AD9C800C769B6 /* FocusSquareSegment.swift */,
+			);
+			path = "Focus Square";
+			sourceTree = "<group>";
+		};
+		9EBA9D70219ADEF000C769B6 /* Virtual Object */ = {
+			isa = PBXGroup;
+			children = (
+				9EBA9D6B219ADEE300C769B6 /* VirtualObject.swift */,
+				9EBA9D71219AE19500C769B6 /* VirtualObjectInteraction.swift */,
+				9EBA9D6C219ADEE300C769B6 /* VirtualObjectLoader.swift */,
+				9EBA9D68219ADD7E00C769B6 /* VirtualObjectARView.swift */,
+			);
+			path = "Virtual Object";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,16 +299,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EBA9D69219ADD7E00C769B6 /* VirtualObjectARView.swift in Sources */,
 				9EE03B85219455FA0015F27B /* MFCC_SVC.mlmodel in Sources */,
+				9EBA9D64219AD9C800C769B6 /* FocusSquare.swift in Sources */,
 				9E20E18F2191E910002E0F48 /* MovingAverage.swift in Sources */,
+				9EBA9D72219AE19500C769B6 /* VirtualObjectInteraction.swift in Sources */,
+				9EBA9D74219AE2BD00C769B6 /* ThresholdPanGesture.swift in Sources */,
 				9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */,
+				9EBA9D6D219ADEE300C769B6 /* VirtualObject.swift in Sources */,
+				9EBA9D67219ADAB400C769B6 /* Utilities.swift in Sources */,
 				9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */,
 				9EAA31C72140228100944452 /* ARBinauralAudioNode.swift in Sources */,
+				9EBA9D6E219ADEE300C769B6 /* VirtualObjectLoader.swift in Sources */,
 				9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */,
 				9E5BC50C215BE7970060B6D8 /* ARAcousticBarrierNode.swift in Sources */,
 				9E9D38A020DD6BD600500D82 /* ViewController.swift in Sources */,
 				9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */,
 				9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */,
+				9EBA9D63219AD9C800C769B6 /* FocusSquareSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

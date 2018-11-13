@@ -16,7 +16,7 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         guard let camera = self.sceneView.session.currentFrame?.camera else { return }
         
 //        updateSourcePosition(withPositionOf: boxNode, forSource: audioPlayer)
-        updateListenerPositionAndOrientation(withPositionOf: camera, inEnvironment: self.audioEnvironment)
+        self.updateListenerPositionAndOrientation(withPositionOf: camera, inEnvironment: self.audioEnvironment)
         
         // light source intensity follows ambient light intensity
         guard let lightIntensityEstimate = sceneView.session.currentFrame?.lightEstimate?.ambientIntensity,
@@ -26,8 +26,41 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         self.lightSource.temperature = lightTemperatureEstimate
         self.lightNode.position = SCNVector3Make(camera.transform.columns.3.x, camera.transform.columns.3.y, camera.transform.columns.3.z)
         
+        let isAnyObjectInView = self.virtualObjectLoader.loadedObjects.contains { object in
+            return self.sceneView.isNode(object, insideFrustumOf: self.sceneView.pointOfView!)
+        }
+        
+        DispatchQueue.main.async {
+            self.virtualObjectInteraction.updateObjectToCurrentTrackingPosition()
+            self.updateFocusSquare(isObjectVisible: isAnyObjectInView)
+        }
+        
+        // GUESSING I'LL HAVE MY OWN VERSION OF THIS SOON
+        // If the object selection menu is open, update availability of items
+//        if objectsViewController != nil {
+            let planeAnchor = self.focusSquare.currentPlaneAnchor
+//            objectsViewController?.updateObjectAvailability(for: planeAnchor)
+//        }
         
         // will have to keep an array of these and update each in turn
         self.testBarrierNode.updateAudioProcessing(forPositionOf: camera)
     }
+    
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else {
+            DispatchQueue.main.async { self.ARFeedbackLabel.text = "Added an anchor for not a plane" }; return }
+        
+        DispatchQueue.main.async { self.ARFeedbackLabel.text = "Surface detected" }
+        print(anchor)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        // make sure anchor is a planeAnchor and the plane can be found in our dictionary
+        guard let planeAnchor = anchor as? ARPlaneAnchor
+            else { DispatchQueue.main.async { self.ARFeedbackLabel.text = "Updated not-a-plane" }; return }
+//        DispatchQueue.main.async { self.ARFeedbackLabel.text = "Updated a plane" }
+        print(anchor)
+    }
+    
 }

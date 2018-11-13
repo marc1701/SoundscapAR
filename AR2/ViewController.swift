@@ -10,10 +10,11 @@ import UIKit
 import ARKit
 import CoreML
 import aubio
+import QuartzCore
 
 class ViewController: UIViewController {
 
-    @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet var sceneView: VirtualObjectARView!
     @IBOutlet weak var MLDataView: UIView!
     
     @IBOutlet weak var humanRatingBar: UIProgressView!
@@ -28,8 +29,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var barrierButton: UIButton!
     @IBOutlet weak var audioSourceButton: UIButton!
     
+    @IBOutlet weak var ARFeedbackLabel: UILabel!
     
-    // AVAudioSession is an object that communicates to the low-level system how audio will be used in the app
+    var focusSquare = FocusSquare()
+    let updateQueue = DispatchQueue(label: "arqueue")
+    var screenCenter: CGPoint {
+        let bounds = self.sceneView.bounds
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
+    /// FROM APPLE DEMO
+    
+    /// A type which manages gesture manipulation of virtual content in the scene.
+    lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: self.sceneView)
+    
+    /// Coordinates the loading and unloading of reference nodes for virtual objects.
+    let virtualObjectLoader = VirtualObjectLoader()
+    
+    /// AVAudioSession is an object that communicates to the low-level system how audio will be used in the app
     let audioSession = AVAudioSession()
     let sampleFreq = 44100.0
     let bufferSize = 64
@@ -80,6 +97,7 @@ class ViewController: UIViewController {
         self.MLDataButton.layer.cornerRadius = 8.0
         self.audioSourceButton.layer.cornerRadius = 8.0
         self.barrierButton.layer.cornerRadius = 8.0
+        self.ARFeedbackLabel.layer.cornerRadius = 8.0
         
         /// AUDIO ///
         self.deviceInput = self.audioEngine.inputNode
@@ -89,8 +107,8 @@ class ViewController: UIViewController {
         // activate audio session (low-level)
         self.activateAudioSession()
 
-        self.sceneRootNode = sceneView.scene.rootNode
-        
+        self.sceneRootNode = self.sceneView.scene.rootNode
+        self.sceneRootNode.addChildNode(focusSquare)
 
         // do routing of audio nodes (like patching a mixer)
         self.audioRoutingSetup()
@@ -125,6 +143,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         // use world tracking configuration (6DOF)
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         
         self.sceneView.delegate = self
         // start AR processing session
@@ -178,5 +197,33 @@ class ViewController: UIViewController {
         // open up an overlay view with some object options?
     }
     
+    
+    func updateFocusSquare(isObjectVisible: Bool) {
+        if isObjectVisible {
+            self.focusSquare.hide()
+        } else {
+            self.focusSquare.unhide()
+            DispatchQueue.main.async { self.ARFeedbackLabel.text = "Try moving left and right" }
+        }
+        
+        // Perform hit testing only when ARKit tracking is in a good state.
+        if let camera = self.sceneView.session.currentFrame?.camera, case .normal = camera.trackingState,
+            let result = self.sceneView.smartHitTest(self.screenCenter) {
+            self.updateQueue.async {
+                self.sceneView.scene.rootNode.addChildNode(self.focusSquare)
+                self.focusSquare.state = .detecting(hitTestResult: result, camera: camera)
+            }
+//            addObjectButton.isHidden = false
+            DispatchQueue.main.async { self.ARFeedbackLabel.text = "Surface detected nicely" }
+        } else {
+            updateQueue.async {
+                self.focusSquare.state = .initializing
+                self.sceneView.pointOfView?.addChildNode(self.focusSquare)
+            }
+//            addObjectButton.isHidden = true
+        }
+        
+        
+    }
     
 }
