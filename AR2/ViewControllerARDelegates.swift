@@ -48,19 +48,14 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
     
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let planeAnchor = anchor as? ARPlaneAnchor else {
-            DispatchQueue.main.async { self.ARFeedbackLabel.text = "Added an anchor for not a plane" }; return }
-        
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         DispatchQueue.main.async { self.ARFeedbackLabel.text = "Surface detected" }
-        print(anchor)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         // make sure anchor is a planeAnchor and the plane can be found in our dictionary
-        guard let planeAnchor = anchor as? ARPlaneAnchor
-            else { DispatchQueue.main.async { self.ARFeedbackLabel.text = "Updated not-a-plane" }; return }
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
 //        DispatchQueue.main.async { self.ARFeedbackLabel.text = "Updated a plane" }
-        print(anchor)
     }
     
 }

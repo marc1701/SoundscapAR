@@ -33,6 +33,8 @@
 		9EBA9D6E219ADEE300C769B6 /* VirtualObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D6C219ADEE300C769B6 /* VirtualObjectLoader.swift */; };
 		9EBA9D72219AE19500C769B6 /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D71219AE19500C769B6 /* VirtualObjectInteraction.swift */; };
 		9EBA9D74219AE2BD00C769B6 /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9D73219AE2BC00C769B6 /* ThresholdPanGesture.swift */; };
+		9EBA9DF3219B232B00C769B6 /* little_lowpoly_chick_01.dae in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DF2219B232B00C769B6 /* little_lowpoly_chick_01.dae */; };
+		9EBA9DF5219B23D400C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DF4219B23D400C769B6 /* Stone_Sa 15-16-49-641.jpg */; };
 		9EE03B7F21944F860015F27B /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03B7E21944F860015F27B /* aubio.framework */; };
 		9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */; };
 		9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */; };
@@ -68,6 +70,8 @@
 		9EBA9D6C219ADEE300C769B6 /* VirtualObjectLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectLoader.swift; sourceTree = "<group>"; };
 		9EBA9D71219AE19500C769B6 /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
 		9EBA9D73219AE2BC00C769B6 /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
+		9EBA9DF2219B232B00C769B6 /* little_lowpoly_chick_01.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = little_lowpoly_chick_01.dae; sourceTree = "<group>"; };
+		9EBA9DF4219B23D400C769B6 /* Stone_Sa 15-16-49-641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stone_Sa 15-16-49-641.jpg"; sourceTree = "<group>"; };
 		9EE03B7E21944F860015F27B /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = aubio.framework; sourceTree = "<group>"; };
 		9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalAudioAnalyser.swift; sourceTree = "<group>"; };
 		9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MFCC_Scaler.mlmodel; sourceTree = "<group>"; };
@@ -133,7 +137,9 @@
 				9E0FBCE821949A9000E35FC4 /* CoreML Models */,
 				9E0FBCE721949A7E00E35FC4 /* Icons */,
 				9E9D38A420DD6BD600500D82 /* Assets.xcassets */,
+				9EBA9DF2219B232B00C769B6 /* little_lowpoly_chick_01.dae */,
 				9E6496B0214130FA00B33DE4 /* cubeScene.scn */,
+				9EBA9DF4219B23D400C769B6 /* Stone_Sa 15-16-49-641.jpg */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -286,7 +292,9 @@
 				9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */,
 				9E0FBCE321949A4000E35FC4 /* audio_icon.png in Resources */,
 				9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */,
+				9EBA9DF5219B23D400C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */,
 				9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */,
+				9EBA9DF3219B232B00C769B6 /* little_lowpoly_chick_01.dae in Resources */,
 				9E6496B1214130FA00B33DE4 /* cubeScene.scn in Resources */,
 				9E0FBCE521949A4000E35FC4 /* barrier_icon.png in Resources */,
 			);

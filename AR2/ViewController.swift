@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var ARFeedbackLabel: UILabel!
     
+    @IBOutlet weak var audioSourceView: UIView!
+    
     var focusSquare = FocusSquare()
     let updateQueue = DispatchQueue(label: "arqueue")
     var screenCenter: CGPoint {
@@ -93,7 +95,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.MLDataView.isHidden = true
+        self.audioSourceView.isHidden = true
         self.MLDataView.layer.cornerRadius = 8.0
+        self.audioSourceView.layer.cornerRadius = 8.0
         self.MLDataButton.layer.cornerRadius = 8.0
         self.audioSourceButton.layer.cornerRadius = 8.0
         self.barrierButton.layer.cornerRadius = 8.0
@@ -120,10 +124,12 @@ class ViewController: UIViewController {
         
         /// AR ///
         // add node to scene
-        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a")
+//        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a")
+        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a", geometryName: "car", geometryScaling: SCNVector3(0.05, 0.05, 0.05))
         self.binauralNodes.append(drumsNode)
 
-        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a")
+//        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a")
+        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a", geometryName: "bird", geometryScaling: SCNVector3(0.2, 0.2, 0.2))
         self.binauralNodes.append(synthNode)
         
         // test barrier node
@@ -161,12 +167,14 @@ class ViewController: UIViewController {
     
     
     @IBAction func viewTappedOnce(_ sender: UITapGestureRecognizer) {
+        print("tappy tappy!")
         let tapLocation = sender.location(in: self.sceneView)
         let hitTestResults = self.sceneView.hitTest(tapLocation)
 //
         guard let node = hitTestResults.first?.node as? ARBinauralAudioNode
-            else { return }
+            else { print("wtf"); return }
         node.audioToggle()
+        print("hmm")
         
 //
 //        if let node = hitTestResults.first?.node as? ARBinauralAudioNode {
@@ -179,8 +187,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func showHideMLDataView(_ sender: UIButton) {
-        if self.MLDataView.isHidden == true {
+        if self.MLDataView.isHidden {
             self.MLDataView.isHidden = false
+            self.audioSourceView.isHidden = true
         } else {
             self.MLDataView.isHidden = true
         }
@@ -193,6 +202,12 @@ class ViewController: UIViewController {
     
     
     @IBAction func audioButtonPressed(_ sender: UIButton) {
+        if self.audioSourceView.isHidden {
+            self.audioSourceView.isHidden = false
+            self.MLDataView.isHidden = true
+        } else {
+            self.audioSourceView.isHidden = true
+        }
         // toggle play/stop here?
         // open up an overlay view with some object options?
     }

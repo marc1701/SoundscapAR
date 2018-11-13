@@ -92,14 +92,9 @@ class ARAcousticBarrierNode: SCNNode {
         
         guard let boxGeometry = self.sceneWithCubeRoot?.childNode(withName: "box", recursively: true)?.geometry
             else { print("Fell down at the first hurdle"); return }
-        self.redMaterials = boxGeometry.materials
-        self.blackMaterial.diffuse.contents = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        self.blackMaterial.selfIllumination.contents = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        self.blackMaterial.specular.contents = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         // colour these barriers black for now
         self.geometry = boxGeometry
-        self.geometry?.materials = [self.blackMaterial]
         
         self.minimumCutoffFrequency = minimumCutoff
         self.maximumAttenuationDistance = maxAttenuationDistance

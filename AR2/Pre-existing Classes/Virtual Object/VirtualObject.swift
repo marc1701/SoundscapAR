@@ -20,15 +20,7 @@ class VirtualObject: SCNReferenceNode {
     private var recentVirtualObjectDistances = [Float]()
     
     /// Allowed alignments for the virtual object
-    var allowedAlignments: [ARPlaneAnchor.Alignment] {
-        if modelName == "sticky note" {
-            return [.horizontal, .vertical]
-        } else if modelName == "painting" {
-            return [.vertical]
-        } else {
-            return [.horizontal]
-        }
-    }
+    var allowedAlignments: [ARPlaneAnchor.Alignment] = [.horizontal]
     
     /// Current alignment of the virtual object
     var currentAlignment: ARPlaneAnchor.Alignment = .horizontal
