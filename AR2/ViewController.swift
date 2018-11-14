@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var MLDataView: UIView!
+    @IBOutlet weak var ARInfoView: UIView!
     
     @IBOutlet weak var humanRatingBar: UIProgressView!
     @IBOutlet weak var naturalRatingBar: UIProgressView!
@@ -27,6 +28,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var MLDataButton: UIButton!
     @IBOutlet weak var barrierButton: UIButton!
     @IBOutlet weak var audioSourceButton: UIButton!
+    @IBOutlet weak var ARButton: UIButton!
+    
+    @IBOutlet weak var userInstructionLabel: UILabel!
+    @IBOutlet weak var ARBigLabel: UILabel!
     
     
     // AVAudioSession is an object that communicates to the low-level system how audio will be used in the app
@@ -72,15 +77,39 @@ class ViewController: UIViewController {
     /// ML Object ///
     let SVCClassifier = EnvironmenatalAudioAnalyser()
     
+    
+    /// ARKIT Stuff from Tutorial ///
+    var planes = [UUID: VirtualPlane]() {
+        didSet {
+            if planes.count > 0 {
+                self.sessionStatus = .ready
+            } else {
+                if self.sessionStatus == .ready { self.sessionStatus = .initialised }
+            }
+        }
+    }
+    
+    var sessionStatus = ARSessionState.initialised {
+        didSet {
+            DispatchQueue.main.async { self.userInstructionLabel.text = self.sessionStatus.description }
+            if sessionStatus == .failed { cleanupARSession() }
+            if sessionStatus == .temporarilyUnavailable {
+                DispatchQueue.main.async { self.ARBigLabel.textColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) } }
+            if sessionStatus == .ready {
+                DispatchQueue.main.async { self.ARBigLabel.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1) } }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.MLDataView.isHidden = true
-        self.MLDataView.layer.cornerRadius = 8.0
-        self.MLDataButton.layer.cornerRadius = 8.0
-        self.audioSourceButton.layer.cornerRadius = 8.0
-        self.barrierButton.layer.cornerRadius = 8.0
-        
+//        self.MLDataView.layer.cornerRadius = 8.0
+//        self.MLDataButton.layer.cornerRadius = 8.0
+//        self.audioSourceButton.layer.cornerRadius = 8.0
+//        self.barrierButton.layer.cornerRadius = 8.0
+        self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        self.MLDataView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         /// AUDIO ///
         self.deviceInput = self.audioEngine.inputNode
         self.deviceInputFormat = self.deviceInput.inputFormat(forBus: 0)
@@ -102,10 +131,12 @@ class ViewController: UIViewController {
         
         /// AR ///
         // add node to scene
-        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a")
+//        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a")
+        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "road_mono.m4a", geometryName: "car", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
         self.binauralNodes.append(drumsNode)
 
-        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a")
+//        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a")
+        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "birdsong_mono.m4a", geometryName: "bird", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
         self.binauralNodes.append(synthNode)
         
         // test barrier node
@@ -125,12 +156,17 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         // use world tracking configuration (6DOF)
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal // I always forget this!
         
         self.sceneView.delegate = self
         // start AR processing session
         self.sceneView.session.run(configuration)
         
-        self.sceneView.debugOptions = ARSCNDebugOptions.showWorldOrigin
+//        self.sceneView.debugOptions = ARSCNDebugOptions.showWorldOrigin
+        sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+        
+        // resume sessionStatus
+        if self.planes.count > 0 { self.sessionStatus = .ready }
     }
 
     
@@ -138,32 +174,35 @@ class ViewController: UIViewController {
         super.viewWillDisappear(animated)
         // pause session if view is going to go
         self.sceneView.session.pause()
+        
+        self.sessionStatus = .temporarilyUnavailable
     }
+    
     
     
     @IBAction func viewTappedOnce(_ sender: UITapGestureRecognizer) {
         let tapLocation = sender.location(in: self.sceneView)
         let hitTestResults = self.sceneView.hitTest(tapLocation)
-//
+        
         guard let node = hitTestResults.first?.node as? ARBinauralAudioNode
             else { return }
-        node.audioToggle()
         
-//
-//        if let node = hitTestResults.first?.node as? ARBinauralAudioNode {
-//            node.audioToggle()
-//        } else if let node = hitTestResults.first?.node as? ARAcousticBarrierNode {
-//            node.audioHidden = !node.audioHidden
-//            // of course now there's no way of bringing it back!
-//        }
+        node.audioToggle()
     }
     
     
     @IBAction func showHideMLDataView(_ sender: UIButton) {
-        if self.MLDataView.isHidden == true {
-            self.MLDataView.isHidden = false
+        self.MLDataView.isHidden = !self.MLDataView.isHidden
+        
+        if !self.ARInfoView.isHidden {
+            self.ARInfoView.isHidden = true
+            self.ARButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        }
+        
+        if self.MLDataView.isHidden {
+            self.MLDataButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         } else {
-            self.MLDataView.isHidden = true
+            self.MLDataButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         }
     }
     
@@ -178,5 +217,28 @@ class ViewController: UIViewController {
         // open up an overlay view with some object options?
     }
     
+    
+    @IBAction func ARButtonPressed(_ sender: UIButton) {
+        self.ARInfoView.isHidden = !self.ARInfoView.isHidden
+        
+        if !self.MLDataView.isHidden {
+            self.MLDataView.isHidden = true
+            self.MLDataButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        }
+        
+        if self.ARInfoView.isHidden {
+            self.ARButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        } else {
+            self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        }
+    }
+ 
+    
+    func cleanupARSession() {
+        // enumerateChildNodes iterates through all the present child nodes and executes the code in the closure
+        self.sceneView.scene.rootNode.enumerateChildNodes{ (node, stop) -> Void in
+            node.removeFromParentNode()
+        }
+    }
     
 }

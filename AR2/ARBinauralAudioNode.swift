@@ -32,19 +32,20 @@ class ARBinauralAudioNode: SCNNode {
     var redMaterials = [SCNMaterial]()
     let greenMaterial = SCNMaterial()
     
-    init(atPosition position: SCNVector3, withAudioFile audioFilename: String) {
+    init(atPosition position: SCNVector3, withAudioFile audioFilename: String, geometryName: String, geometryScaling: SCNVector3 = SCNVector3(1, 1, 1)) {
         
         super.init()
         
         // sceneKit bits
-        guard let boxGeometry = self.sceneWithCubeRoot?.childNode(withName: "box", recursively: true)?.geometry
+        guard let loadedGeometry = self.sceneWithCubeRoot?.childNode(withName: geometryName, recursively: true)?.geometry
             else { print("Fell down at the first hurdle"); return }
-        self.redMaterials = boxGeometry.materials
-        self.greenMaterial.diffuse.contents = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
-        self.greenMaterial.selfIllumination.contents = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
-        self.greenMaterial.specular.contents = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.redMaterials = loadedGeometry.materials
+        //        self.greenMaterial.diffuse.contents = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
+        //        self.greenMaterial.selfIllumination.contents = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
+        //        self.greenMaterial.specular.contents = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        self.geometry = boxGeometry
+        self.geometry = loadedGeometry
+        self.scale = geometryScaling
         self.position = position
         
         // audio bits
@@ -89,17 +90,17 @@ class ARBinauralAudioNode: SCNNode {
     }
     
     
-//    func updatePosition(to position: SCNVector3) {
-//        self.position = position
-//        self.audioPlayer.position = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
-//    }
+    //    func updatePosition(to position: SCNVector3) {
+    //        self.position = position
+    //        self.audioPlayer.position = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
+    //    }
     
     func audioToggle() {
         if audioIsPlaying {
-            self.geometry?.materials = self.redMaterials
+            //            self.geometry?.materials = self.redMaterials
             self.audioPlayer.stop()
         } else {
-            self.geometry?.materials = [self.greenMaterial]
+            //            self.geometry?.materials = [self.greenMaterial]
             self.audioPlayer.scheduleBuffer(self.audioBuffer, at: nil, options: .loops, completionHandler: nil)
             self.audioPlayer.play()
         }

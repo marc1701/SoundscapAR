@@ -51,7 +51,7 @@ class ARAcousticBarrierNode: SCNNode {
     var gains = [String: Float]() {
         willSet {
             guard let leftGain = newValue["L"],
-                  let rightGain = newValue["R"]
+                let rightGain = newValue["R"]
                 else { print("Error setting barrier gains"); return }
             
             self.mixerPostFilterLeft.volume = leftGain
@@ -92,14 +92,8 @@ class ARAcousticBarrierNode: SCNNode {
         
         guard let boxGeometry = self.sceneWithCubeRoot?.childNode(withName: "box", recursively: true)?.geometry
             else { print("Fell down at the first hurdle"); return }
-        self.redMaterials = boxGeometry.materials
-        self.blackMaterial.diffuse.contents = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        self.blackMaterial.selfIllumination.contents = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        self.blackMaterial.specular.contents = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
-        // colour these barriers black for now
         self.geometry = boxGeometry
-        self.geometry?.materials = [self.blackMaterial]
         
         self.minimumCutoffFrequency = minimumCutoff
         self.maximumAttenuationDistance = maxAttenuationDistance
@@ -114,8 +108,8 @@ class ARAcousticBarrierNode: SCNNode {
                                                  cameraPosition.z - self.position.z)
         
         let distance =  sqrtf(pow(coordinateDistances.x, 2)
-                            + pow(coordinateDistances.y, 2)
-                            + pow(coordinateDistances.z, 2))
+            + pow(coordinateDistances.y, 2)
+            + pow(coordinateDistances.z, 2))
         
         // can have user-settable max/min values for distance and cutoff here
         self.lowPassFilterParameters.frequency = mapValue(input: distance,
@@ -123,7 +117,7 @@ class ARAcousticBarrierNode: SCNNode {
                                                           newLow: self.minimumCutoffFrequency, newHigh: 20000)
     }
     
-
+    
     // this is the one to use to update everything outside the class
     func updateAudioProcessing(forPositionOf camera: ARCamera) {
         
@@ -168,11 +162,11 @@ class ARAcousticBarrierNode: SCNNode {
     }
     
     
-//    func setGainsBasedOnPanValue(_ input: Float) {
-//        // input should be between 0 and pi/2
-//        // equal-power panning
-//        self.gains = ["L": cos(input), "R": sin(input)]
-//    }
+    //    func setGainsBasedOnPanValue(_ input: Float) {
+    //        // input should be between 0 and pi/2
+    //        // equal-power panning
+    //        self.gains = ["L": cos(input), "R": sin(input)]
+    //    }
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -188,7 +182,7 @@ class ARAcousticBarrierNode: SCNNode {
                                                 AVAudioConnectionPoint(node: self.mixerPostFilterRight, bus: 0)]
         
         self.audioNodesToAttach = [self.lowPassFilter, self.mixerPreFilterLeft, self.mixerPostFilterLeft,
-                                self.mixerPreFilterRight, self.mixerPostFilterRight]
+                                   self.mixerPreFilterRight, self.mixerPostFilterRight]
         
         self.mixersToConnect = [self.mixerPostFilterRight, self.mixerPreFilterRight, self.mixerPostFilterLeft, self.mixerPreFilterLeft]
     }
