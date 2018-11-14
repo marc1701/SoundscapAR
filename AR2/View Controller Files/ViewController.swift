@@ -27,8 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mechanicalRatingText: UITextField!
     
     @IBOutlet weak var MLDataButton: UIButton!
-    @IBOutlet weak var barrierButton: UIButton!
-    @IBOutlet weak var audioSourceButton: UIButton!
+    @IBOutlet weak var objectSelectionButton: UIButton!
     @IBOutlet weak var ARButton: UIButton!
     
     @IBOutlet weak var userInstructionLabel: UILabel!
@@ -111,7 +110,7 @@ class ViewController: UIViewController {
         self.MLDataView.isHidden = true
 //        self.MLDataView.layer.cornerRadius = 8.0
 //        self.MLDataButton.layer.cornerRadius = 8.0
-//        self.audioSourceButton.layer.cornerRadius = 8.0
+//        self.objectSelectionButton.layer.cornerRadius = 8.0
 //        self.barrierButton.layer.cornerRadius = 8.0
         self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         self.MLDataView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -213,23 +212,18 @@ class ViewController: UIViewController {
         
         if !self.objectSelectionView.isHidden {
             self.objectSelectionView.isHidden = true
-            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+            self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
     }
     
-    @IBAction func barrierButtonPressed(_ sender: UIButton) {
-        // there'll probably only ever be the one node in the present app config
-        self.testBarrierNode.audioHidden = !self.testBarrierNode.audioHidden
-    }
     
-    
-    @IBAction func audioButtonPressed(_ sender: UIButton) {
+    @IBAction func objectSelectionButtonPressed(_ sender: UIButton) {
         self.objectSelectionView.isHidden = !self.objectSelectionView.isHidden
         
         if self.objectSelectionView.isHidden {
-            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+            self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         } else {
-            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+            self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         }
         
         if !self.ARInfoView.isHidden {
@@ -260,7 +254,7 @@ class ViewController: UIViewController {
         
         if !self.objectSelectionView.isHidden {
             self.objectSelectionView.isHidden = true
-            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+            self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
     }
  
@@ -271,5 +265,4 @@ class ViewController: UIViewController {
             node.removeFromParentNode()
         }
     }
-    
 }
