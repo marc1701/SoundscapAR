@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var MLDataView: UIView!
     @IBOutlet weak var ARInfoView: UIView!
+    @IBOutlet weak var objectSelectionView: UIView!
     
     @IBOutlet weak var humanRatingBar: UIProgressView!
     @IBOutlet weak var naturalRatingBar: UIProgressView!
@@ -33,6 +34,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var userInstructionLabel: UILabel!
     @IBOutlet weak var ARBigLabel: UILabel!
     
+    @IBOutlet weak var carImage: UIImageView!
+    @IBOutlet weak var birdImage: UIImageView!
+    @IBOutlet weak var fountainImage: UIImageView!
+    @IBOutlet weak var barrierImage: UIImageView!
     
     // AVAudioSession is an object that communicates to the low-level system how audio will be used in the app
     let audioSession = AVAudioSession()
@@ -114,6 +119,7 @@ class ViewController: UIViewController {
         self.deviceInput = self.audioEngine.inputNode
         self.deviceInputFormat = self.deviceInput.inputFormat(forBus: 0)
         self.mainMixer = self.audioEngine.mainMixerNode
+        self.objectSelectionView.isHidden = true
         
         // activate audio session (low-level)
         self.activateAudioSession()
@@ -194,15 +200,20 @@ class ViewController: UIViewController {
     @IBAction func showHideMLDataView(_ sender: UIButton) {
         self.MLDataView.isHidden = !self.MLDataView.isHidden
         
+        if self.MLDataView.isHidden {
+            self.MLDataButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        } else {
+            self.MLDataButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        }
+        
         if !self.ARInfoView.isHidden {
             self.ARInfoView.isHidden = true
             self.ARButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
         
-        if self.MLDataView.isHidden {
-            self.MLDataButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
-        } else {
-            self.MLDataButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        if !self.objectSelectionView.isHidden {
+            self.objectSelectionView.isHidden = true
+            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
     }
     
@@ -213,23 +224,43 @@ class ViewController: UIViewController {
     
     
     @IBAction func audioButtonPressed(_ sender: UIButton) {
-        // toggle play/stop here?
-        // open up an overlay view with some object options?
+        self.objectSelectionView.isHidden = !self.objectSelectionView.isHidden
+        
+        if self.objectSelectionView.isHidden {
+            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        } else {
+            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        }
+        
+        if !self.ARInfoView.isHidden {
+            self.ARInfoView.isHidden = true
+            self.ARButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        }
+        
+        if !self.MLDataView.isHidden {
+            self.MLDataView.isHidden = true
+            self.MLDataButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        }
     }
     
     
     @IBAction func ARButtonPressed(_ sender: UIButton) {
         self.ARInfoView.isHidden = !self.ARInfoView.isHidden
         
+        if self.ARInfoView.isHidden {
+            self.ARButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        } else {
+            self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        }
+        
         if !self.MLDataView.isHidden {
             self.MLDataView.isHidden = true
             self.MLDataButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
         
-        if self.ARInfoView.isHidden {
-            self.ARButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
-        } else {
-            self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        if !self.objectSelectionView.isHidden {
+            self.objectSelectionView.isHidden = true
+            self.audioSourceButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
     }
  

@@ -32,6 +32,14 @@
 		9EBA9E09219C2C0500C769B6 /* AR_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E08219C2C0500C769B6 /* AR_icon.png */; };
 		9EBA9E0C219C36E200C769B6 /* ARSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */; };
 		9EBA9E0D219C36E200C769B6 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */; };
+		9EBA9E7B219C646400C769B6 /* fountain_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E73219C646300C769B6 /* fountain_green.png */; };
+		9EBA9E7C219C646400C769B6 /* barrier_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E74219C646300C769B6 /* barrier_green.png */; };
+		9EBA9E7D219C646400C769B6 /* barrier_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E75219C646300C769B6 /* barrier_red.png */; };
+		9EBA9E7E219C646400C769B6 /* car_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E76219C646400C769B6 /* car_green.png */; };
+		9EBA9E7F219C646400C769B6 /* bird_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E77219C646400C769B6 /* bird_green.png */; };
+		9EBA9E80219C646400C769B6 /* car_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E78219C646400C769B6 /* car_red.png */; };
+		9EBA9E81219C646400C769B6 /* fountain_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E79219C646400C769B6 /* fountain_red.png */; };
+		9EBA9E82219C646400C769B6 /* bird_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E7A219C646400C769B6 /* bird_red.png */; };
 		9EE03B7F21944F860015F27B /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03B7E21944F860015F27B /* aubio.framework */; };
 		9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */; };
 		9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */; };
@@ -67,6 +75,14 @@
 		9EBA9E08219C2C0500C769B6 /* AR_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR_icon.png; sourceTree = "<group>"; };
 		9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSessionState.swift; sourceTree = "<group>"; };
 		9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		9EBA9E73219C646300C769B6 /* fountain_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_green.png; sourceTree = "<group>"; };
+		9EBA9E74219C646300C769B6 /* barrier_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrier_green.png; sourceTree = "<group>"; };
+		9EBA9E75219C646300C769B6 /* barrier_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrier_red.png; sourceTree = "<group>"; };
+		9EBA9E76219C646400C769B6 /* car_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_green.png; sourceTree = "<group>"; };
+		9EBA9E77219C646400C769B6 /* bird_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_green.png; sourceTree = "<group>"; };
+		9EBA9E78219C646400C769B6 /* car_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_red.png; sourceTree = "<group>"; };
+		9EBA9E79219C646400C769B6 /* fountain_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_red.png; sourceTree = "<group>"; };
+		9EBA9E7A219C646400C769B6 /* bird_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_red.png; sourceTree = "<group>"; };
 		9EE03B7E21944F860015F27B /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = aubio.framework; sourceTree = "<group>"; };
 		9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalAudioAnalyser.swift; sourceTree = "<group>"; };
 		9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MFCC_Scaler.mlmodel; sourceTree = "<group>"; };
@@ -102,6 +118,14 @@
 		9E0FBCE721949A7E00E35FC4 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				9EBA9E74219C646300C769B6 /* barrier_green.png */,
+				9EBA9E75219C646300C769B6 /* barrier_red.png */,
+				9EBA9E77219C646400C769B6 /* bird_green.png */,
+				9EBA9E7A219C646400C769B6 /* bird_red.png */,
+				9EBA9E76219C646400C769B6 /* car_green.png */,
+				9EBA9E78219C646400C769B6 /* car_red.png */,
+				9EBA9E73219C646300C769B6 /* fountain_green.png */,
+				9EBA9E79219C646400C769B6 /* fountain_red.png */,
 				9EBA9E08219C2C0500C769B6 /* AR_icon.png */,
 				9E0FBCE021949A3F00E35FC4 /* audio_icon.png */,
 				9E0FBCE121949A3F00E35FC4 /* ML_icon.png */,
@@ -163,17 +187,10 @@
 		9E9D389C20DD6BD600500D82 /* AR2 */ = {
 			isa = PBXGroup;
 			children = (
-				9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */,
-				9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */,
 				9E6496B22141310900B33DE4 /* Media */,
-				9E9D389D20DD6BD600500D82 /* AppDelegate.swift */,
-				9E9D389F20DD6BD600500D82 /* ViewController.swift */,
-				9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */,
-				9E20E18E2191E910002E0F48 /* MovingAverage.swift */,
-				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */,
-				9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */,
-				9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */,
-				9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */,
+				9EBA9E0E219C3FD600C769B6 /* Custom Classes */,
+				9EBA9E0F219C3FE400C769B6 /* Tutorial Classes */,
+				9EBA9E10219C3FF200C769B6 /* View Controller Files */,
 				9E9D38A120DD6BD600500D82 /* Main.storyboard */,
 				9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */,
 				9E9D38A920DD6BD600500D82 /* Info.plist */,
@@ -184,6 +201,37 @@
 		9EBA9E02219B374C00C769B6 /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9EBA9E0E219C3FD600C769B6 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */,
+				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */,
+				9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */,
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		9EBA9E0F219C3FE400C769B6 /* Tutorial Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */,
+				9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */,
+				9E20E18E2191E910002E0F48 /* MovingAverage.swift */,
+			);
+			path = "Tutorial Classes";
+			sourceTree = "<group>";
+		};
+		9EBA9E10219C3FF200C769B6 /* View Controller Files */ = {
+			isa = PBXGroup;
+			children = (
+				9E9D389D20DD6BD600500D82 /* AppDelegate.swift */,
+				9E9D389F20DD6BD600500D82 /* ViewController.swift */,
+				9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */,
+				9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */,
+			);
+			path = "View Controller Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,16 +298,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EBA9E82219C646400C769B6 /* bird_red.png in Resources */,
 				9E0FBCE421949A4000E35FC4 /* ML_icon.png in Resources */,
 				9EBA9DFF219B35A700C769B6 /* fountain_mix.m4a in Resources */,
+				9EBA9E80219C646400C769B6 /* car_red.png in Resources */,
 				9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */,
 				9E6496B62141736700B33DE4 /* synth.m4a in Resources */,
 				9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */,
+				9EBA9E7F219C646400C769B6 /* bird_green.png in Resources */,
 				9EBA9E09219C2C0500C769B6 /* AR_icon.png in Resources */,
+				9EBA9E81219C646400C769B6 /* fountain_red.png in Resources */,
 				9EBA9E05219B377700C769B6 /* birdsong_mono.m4a in Resources */,
 				9EBA9DF8219B2F1000C769B6 /* cubeScene.scn in Resources */,
+				9EBA9E7E219C646400C769B6 /* car_green.png in Resources */,
 				9E0FBCE321949A4000E35FC4 /* audio_icon.png in Resources */,
+				9EBA9E7B219C646400C769B6 /* fountain_green.png in Resources */,
+				9EBA9E7D219C646400C769B6 /* barrier_red.png in Resources */,
 				9EBA9DF9219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */,
+				9EBA9E7C219C646400C769B6 /* barrier_green.png in Resources */,
 				9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */,
 				9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */,
 				9E0FBCE521949A4000E35FC4 /* barrier_icon.png in Resources */,
