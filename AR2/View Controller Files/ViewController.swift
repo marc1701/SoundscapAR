@@ -74,8 +74,8 @@ class ViewController: UIViewController {
     let deviceInputDummy = AVAudioMixerNode()
     ///////////////////////////////////
     // TEMP TEST STUFF FOR BARRIER NODE
-    let testBarrierNode = ARAcousticBarrierNode(atPosition: SCNVector3(-0.5, 0, 0))
-    //        self.barrierNodes.append(testBarrierNode)
+    let barrierNode = ARAcousticBarrierNode(atPosition: SCNVector3(-0.5, 0, 0))
+    //        self.barrierNodes.append(barrierNode)
     ///////////////////////////////////
     
     /// ML Object ///
@@ -104,16 +104,27 @@ class ViewController: UIViewController {
         }
     }
     
+    var objectsActive = [false, false, false, false]
+    var objectImageViews = [UIImageView]()
+    let redObjectImages = [UIImage(named: "car_red.png"),
+                           UIImage(named: "bird_red.png"),
+                           UIImage(named: "fountain_red.png"),
+                           UIImage(named: "barrier_red.png")]
+    let greenObjectImages = [UIImage(named: "car_green.png"),
+                             UIImage(named: "bird_green.png"),
+                             UIImage(named: "fountain_green.png"),
+                             UIImage(named: "barrier_green.png")]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.objectImageViews = [self.carImage, self.birdImage, self.fountainImage, self.barrierImage]
+        
         self.MLDataView.isHidden = true
-//        self.MLDataView.layer.cornerRadius = 8.0
-//        self.MLDataButton.layer.cornerRadius = 8.0
-//        self.objectSelectionButton.layer.cornerRadius = 8.0
-//        self.barrierButton.layer.cornerRadius = 8.0
         self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         self.MLDataView.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        
         /// AUDIO ///
         self.deviceInput = self.audioEngine.inputNode
         self.deviceInputFormat = self.deviceInput.inputFormat(forBus: 0)
@@ -132,22 +143,17 @@ class ViewController: UIViewController {
         // starts our instance of AVAudioEngine (higher-level)
         self.startAudioEngine()
         
-        
-        
         /// AR ///
         // add node to scene
-//        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "drums.m4a")
-        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "road_mono.m4a", geometryName: "car", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
-        self.binauralNodes.append(drumsNode)
-
-//        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "synth.m4a")
-        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "birdsong_mono.m4a", geometryName: "bird", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
-        self.binauralNodes.append(synthNode)
+//        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "road_mono.m4a", geometryName: "car", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
+//        self.binauralNodes.append(drumsNode)
+//
+//        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "birdsong_mono.m4a", geometryName: "bird", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
+//        self.binauralNodes.append(synthNode)
         
         // test barrier node
-        self.sceneRootNode.addChildNode(self.testBarrierNode)
+        self.sceneRootNode.addChildNode(self.barrierNode)
         ///////
-        
         
         // add lighting source at initial camera position (this will follow the camera)
         self.lightSource.type = .omni
@@ -264,5 +270,15 @@ class ViewController: UIViewController {
         self.sceneView.scene.rootNode.enumerateChildNodes{ (node, stop) -> Void in
             node.removeFromParentNode()
         }
+    }
+    
+    @IBAction func imageButtonPressed(_ sender: UIButton) {
+        if self.objectsActive[sender.tag] {
+            self.objectImageViews[sender.tag].image = self.redObjectImages[sender.tag]
+        } else {
+            self.objectImageViews[sender.tag].image = self.greenObjectImages[sender.tag]
+        }
+        
+        self.objectsActive[sender.tag] = !self.objectsActive[sender.tag]
     }
 }

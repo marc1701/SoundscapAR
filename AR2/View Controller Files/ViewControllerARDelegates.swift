@@ -28,7 +28,7 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
         
         
         // will have to keep an array of these and update each in turn
-        self.testBarrierNode.updateAudioProcessing(forPositionOf: camera)
+        self.barrierNode.updateAudioProcessing(forPositionOf: camera)
     }
     
     
