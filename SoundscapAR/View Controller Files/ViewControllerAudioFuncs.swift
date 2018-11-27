@@ -15,7 +15,7 @@ extension ViewController {
     func activateAudioSession() {
         // set up audio session
         do {
-            try self.audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try self.audioSession.setCategory(.playAndRecord, mode: .default, options: [])
             try self.audioSession.setPreferredSampleRate(sampleFreq)
             try self.audioSession.setPreferredIOBufferDuration(Double(bufferSize) / sampleFreq)
             try self.audioSession.setActive(true)

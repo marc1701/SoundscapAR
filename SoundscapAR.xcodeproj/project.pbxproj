@@ -16,6 +16,7 @@
 		9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */; };
 		9E5BC50C215BE7970060B6D8 /* ARAcousticBarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */; };
 		9E6496B62141736700B33DE4 /* synth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E6496B52141736700B33DE4 /* synth.m4a */; };
+		9E79009A21ADB8EE006E4793 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E79009921ADB8EE006E4793 /* Default-568h@2x.png */; };
 		9E8686B221A32138007EDC98 /* ARAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8686B121A32138007EDC98 /* ARAudioNode.swift */; };
 		9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */; };
 		9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E88F5D3212C58DE00ECAD79 /* drums.m4a */; };
@@ -58,6 +59,7 @@
 		9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerARDelegates.swift; sourceTree = "<group>"; };
 		9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAcousticBarrier.swift; sourceTree = "<group>"; };
 		9E6496B52141736700B33DE4 /* synth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = synth.m4a; sourceTree = "<group>"; };
+		9E79009921ADB8EE006E4793 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9E8686B121A32138007EDC98 /* ARAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudioNode.swift; sourceTree = "<group>"; };
 		9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioFuncs.swift; sourceTree = "<group>"; };
 		9E88F5D3212C58DE00ECAD79 /* drums.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.m4a; sourceTree = "<group>"; };
@@ -165,17 +167,23 @@
 				9E0FBCE821949A9000E35FC4 /* CoreML Models */,
 				9E0FBCE721949A7E00E35FC4 /* Icons */,
 				9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */,
+				9E79009921ADB8EE006E4793 /* Default-568h@2x.png */,
 				9EBA9DF6219B2F1000C769B6 /* cubeScene.scn */,
 				9E9D38A420DD6BD600500D82 /* Assets.xcassets */,
 			);
 			path = Media;
 			sourceTree = "<group>";
 		};
+		9E79009721ADB7DF006E4793 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9E9D389120DD6BD600500D82 = {
 			isa = PBXGroup;
 			children = (
 				9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */,
-				9E9D389C20DD6BD600500D82 /* AR2 */,
+				9E9D389C20DD6BD600500D82 /* SoundscapAR */,
 				9E9D389B20DD6BD600500D82 /* Products */,
 				9E20E1852191E7DC002E0F48 /* Frameworks */,
 			);
@@ -189,7 +197,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9E9D389C20DD6BD600500D82 /* AR2 */ = {
+		9E9D389C20DD6BD600500D82 /* SoundscapAR */ = {
 			isa = PBXGroup;
 			children = (
 				9E6496B22141310900B33DE4 /* Media */,
@@ -200,7 +208,7 @@
 				9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */,
 				9E9D38A920DD6BD600500D82 /* Info.plist */,
 			);
-			path = AR2;
+			path = SoundscapAR;
 			sourceTree = "<group>";
 		};
 		9EBA9E0E219C3FD600C769B6 /* Custom Classes */ = {
@@ -267,6 +275,7 @@
 				TargetAttributes = {
 					9E9D389920DD6BD600500D82 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -281,6 +290,12 @@
 			mainGroup = 9E9D389120DD6BD600500D82;
 			productRefGroup = 9E9D389B20DD6BD600500D82 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9E79009721ADB7DF006E4793 /* Products */;
+					ProjectRef = 9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9E9D389920DD6BD600500D82 /* SoundscapAR */,
@@ -298,6 +313,7 @@
 				9EBA9DFF219B35A700C769B6 /* fountain_mix.m4a in Resources */,
 				9EBA9E80219C646400C769B6 /* car_red.png in Resources */,
 				9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */,
+				9E79009A21ADB8EE006E4793 /* Default-568h@2x.png in Resources */,
 				9E6496B62141736700B33DE4 /* synth.m4a in Resources */,
 				9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */,
 				9EBA9E7F219C646400C769B6 /* bird_green.png in Resources */,
@@ -488,18 +504,18 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/AR2.xcodeproj",
+					"$(PROJECT_DIR)/SoundscapAR.xcodeproj",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/AR2",
+					"$(PROJECT_DIR)/SoundscapAR",
 				);
-				INFOPLIST_FILE = AR2/Info.plist;
+				INFOPLIST_FILE = SoundscapAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = marc1701.SoundscapAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -514,18 +530,18 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/AR2.xcodeproj",
+					"$(PROJECT_DIR)/SoundscapAR.xcodeproj",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/AR2",
+					"$(PROJECT_DIR)/SoundscapAR",
 				);
-				INFOPLIST_FILE = AR2/Info.plist;
+				INFOPLIST_FILE = SoundscapAR/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = marc1701.SoundscapAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
