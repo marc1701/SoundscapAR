@@ -13,6 +13,8 @@ import aubio
 
 class ViewController: UIViewController {
 
+    /// SETUP ///
+    
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var MLDataView: UIView!
     @IBOutlet weak var ARInfoView: UIView!
@@ -29,6 +31,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var MLDataButton: UIButton!
     @IBOutlet weak var objectSelectionButton: UIButton!
     @IBOutlet weak var ARButton: UIButton!
+    
+    @IBOutlet weak var objectSpawnPointCrosshairs: UIButton!
     
     @IBOutlet weak var userInstructionLabel: UILabel!
     @IBOutlet weak var ARBigLabel: UILabel!
@@ -53,30 +57,23 @@ class ViewController: UIViewController {
     let mono = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
     let stereo = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)!
     
-    // this is updated frame-by-frame
-//    var listenerPosition = AVAudio3DPoint()
-    
     let lightSource = SCNLight()
     let lightNode = SCNNode()
     
     var sceneRootNode: SCNNode!
     
-    // could probably use a system similar to this in order to make sure all the filter objects are connected up in the correct way. I guess we could probably check for prior connections, disconnect and reconnect
-    var binauralNodes = [ARBinauralAudioNode]() {
-        willSet {
-            guard let newNode = newValue.last else { return }
-            self.sceneRootNode.addChildNode(newNode)
-            self.audioEngine.attach(newNode.audioPlayer)
-            self.audioEngine.connect(newNode.audioPlayer, to: self.audioEnvironment, format: mono)
-        }
-    }
+    var binauralNodes = [ARAudioNode]() //{
+//        willSet {
+//            guard let newNode = newValue.last else { return }
+//            self.sceneRootNode.addChildNode(newNode)
+//            self.audioEngine.attach(newNode.audioPlayer)
+//            self.audioEngine.connect(newNode.audioPlayer, to: self.audioEnvironment, format: mono)
+//        }
+//    }
     
     let deviceInputDummy = AVAudioMixerNode()
-    ///////////////////////////////////
-    // TEMP TEST STUFF FOR BARRIER NODE
-    let barrierNode = ARAcousticBarrierNode(atPosition: SCNVector3(-0.5, 0, 0))
-    //        self.barrierNodes.append(barrierNode)
-    ///////////////////////////////////
+    
+    let barrierNode = ARAcousticBarrier(atPosition: SCNVector3(-0.5, 0, 0))
     
     /// ML Object ///
     let SVCClassifier = EnvironmenatalAudioAnalyser()
@@ -104,7 +101,6 @@ class ViewController: UIViewController {
         }
     }
     
-    var objectsActive = [false, false, false, false]
     var objectImageViews = [UIImageView]()
     let redObjectImages = [UIImage(named: "car_red.png"),
                            UIImage(named: "bird_red.png"),
@@ -115,11 +111,16 @@ class ViewController: UIViewController {
                              UIImage(named: "fountain_green.png"),
                              UIImage(named: "barrier_green.png")]
     
+    var objectSpawnPoint : CGPoint!
+    
+    /// FUNCTIONS START HERE ///
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.objectImageViews = [self.carImage, self.birdImage, self.fountainImage, self.barrierImage]
+        self.objectSpawnPoint = CGPoint(x: self.objectSpawnPointCrosshairs.frame.midX, y: self.objectSpawnPointCrosshairs.frame.midY) //self.objectSpawnPointCrosshairs.frame.origin
+        self.objectSpawnPointCrosshairs.isHidden = true
         
         self.MLDataView.isHidden = true
         self.ARButton.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
@@ -136,7 +137,6 @@ class ViewController: UIViewController {
 
         self.sceneRootNode = sceneView.scene.rootNode
         
-
         // do routing of audio nodes (like patching a mixer)
         self.audioRoutingSetup()
         
@@ -144,16 +144,36 @@ class ViewController: UIViewController {
         self.startAudioEngine()
         
         /// AR ///
-        // add node to scene
-//        let drumsNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "road_mono.m4a", geometryName: "car", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
-//        self.binauralNodes.append(drumsNode)
-//
-//        let synthNode = ARBinauralAudioNode(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "birdsong_mono.m4a", geometryName: "bird", geometryScaling: SCNVector3(0.1, 0.1, 0.1))
-//        self.binauralNodes.append(synthNode)
         
-        // test barrier node
+        // set up audio nodes
+        let carNode = ARBinauralAudioSource(atPosition: SCNVector3(0, 0, -0.5), withAudioFile: "road_mono.m4a", geometryName: "car", geometryScaling: SCNVector3(1, 1, 1))
+        let birdNode = ARBinauralAudioSource(atPosition: SCNVector3(0, 0, 0.5), withAudioFile: "birdsong_mono.m4a", geometryName: "bird", geometryScaling: SCNVector3(0.2, 0.2, 0.2))
+        let fountainNode = ARBinauralAudioSource(atPosition: SCNVector3(0, 0, 1), withAudioFile: "fountain_mix.m4a", geometryName: "fountain", geometryScaling: SCNVector3(0.01, 0.01, 0.01), eulerRotation: SCNVector3(-Float.pi/2, 0, 0))
+        
+        self.binauralNodes.append(carNode) // 0
+        self.binauralNodes.append(birdNode) // 1
+        self.binauralNodes.append(fountainNode) // 2
+        
+        self.sceneRootNode.addChildNode(carNode)
+        self.sceneRootNode.addChildNode(birdNode)
+        self.sceneRootNode.addChildNode(fountainNode)
+        
+        self.audioEngine.attach(carNode.audioPlayer)
+        self.audioEngine.attach(birdNode.audioPlayer)
+        self.audioEngine.attach(fountainNode.audioPlayer)
+        
+        self.audioEngine.connect(carNode.audioPlayer, to: self.audioEnvironment, format: mono)
+        self.audioEngine.connect(birdNode.audioPlayer, to: self.audioEnvironment, format: mono)
+        self.audioEngine.connect(fountainNode.audioPlayer, to: self.audioEnvironment, format: mono)
+        
+        // hide nodes
+        carNode.audioIsPlaying = false
+        birdNode.audioIsPlaying = false
+        fountainNode.audioIsPlaying = false
+        // add barrier node to scene
         self.sceneRootNode.addChildNode(self.barrierNode)
-        ///////
+        self.barrierNode.audioIsPlaying = false
+        self.binauralNodes.append(self.barrierNode) // 3
         
         // add lighting source at initial camera position (this will follow the camera)
         self.lightSource.type = .omni
@@ -192,16 +212,25 @@ class ViewController: UIViewController {
     
     
     @IBAction func viewTappedOnce(_ sender: UITapGestureRecognizer) {
-        let tapLocation = sender.location(in: self.sceneView)
-        let hitTestResults = self.sceneView.hitTest(tapLocation)
-        
-        guard let node = hitTestResults.first?.node as? ARBinauralAudioNode
-            else { return }
-        
-        node.audioToggle()
+//        let tapLocation = sender.location(in: self.sceneView)
+//        let hitTestResults = self.sceneView.hitTest(tapLocation)
+////
+//        guard let node = hitTestResults.first?.node as? ARBinauralAudioSource
+////            else { return }
+//
+//        let hitTestResults = self.sceneView.hitTest(self.objectSpawnPoint, types: .existingPlane)
+//        guard hitTestResults.count > 0, let pointOnPlane = hitTestResults.first else { return }
+////        node.audioToggle()
+//        barrierNode.audioIsPlaying = !barrierNode.audioIsPlaying
+//
+//        let newObjectPosition = SCNVector3Make(pointOnPlane.worldTransform.columns.3.x,
+//                                               pointOnPlane.worldTransform.columns.3.y,
+//                                               pointOnPlane.worldTransform.columns.3.z)
+//        barrierNode.position = newObjectPosition
+////        barrierNode.position
     }
     
-    
+    // could definitely collapse these three functions down into one
     @IBAction func showHideMLDataView(_ sender: UIButton) {
         self.MLDataView.isHidden = !self.MLDataView.isHidden
         
@@ -220,11 +249,18 @@ class ViewController: UIViewController {
             self.objectSelectionView.isHidden = true
             self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
+        
+        if !self.objectSpawnPointCrosshairs.isHidden{
+            self.objectSpawnPointCrosshairs.isHidden = true
+        }
     }
     
     
     @IBAction func objectSelectionButtonPressed(_ sender: UIButton) {
         self.objectSelectionView.isHidden = !self.objectSelectionView.isHidden
+        
+        // could I add in a feature that when a button is held the object will move on a vertical line above the spawn point?
+        self.objectSpawnPointCrosshairs.isHidden = !self.objectSpawnPointCrosshairs.isHidden
         
         if self.objectSelectionView.isHidden {
             self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
@@ -262,6 +298,10 @@ class ViewController: UIViewController {
             self.objectSelectionView.isHidden = true
             self.objectSelectionButton.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
         }
+        
+        if !self.objectSpawnPointCrosshairs.isHidden{
+            self.objectSpawnPointCrosshairs.isHidden = true
+        }
     }
  
     
@@ -273,12 +313,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func imageButtonPressed(_ sender: UIButton) {
-        if self.objectsActive[sender.tag] {
-            self.objectImageViews[sender.tag].image = self.redObjectImages[sender.tag]
-        } else {
-            self.objectImageViews[sender.tag].image = self.greenObjectImages[sender.tag]
-        }
+        let selectedImageView = self.objectImageViews[sender.tag]
+        let selectedNode = self.binauralNodes[sender.tag]
+        let redImageVersion = self.redObjectImages[sender.tag]
+        let greenImageVersion = self.greenObjectImages[sender.tag]
         
-        self.objectsActive[sender.tag] = !self.objectsActive[sender.tag]
+        if selectedNode.audioIsPlaying {
+            selectedNode.audioIsPlaying = false // also hides object
+            
+            selectedImageView.image = redImageVersion
+            
+        } else {
+            let hitTestResults = self.sceneView.hitTest(self.objectSpawnPoint, types: .existingPlane)
+            guard hitTestResults.count > 0, let pointOnPlane = hitTestResults.first else { return }
+            
+            let newObjectPosition = SCNVector3(pointOnPlane.worldTransform.columns.3.x,
+                                               pointOnPlane.worldTransform.columns.3.y,
+                                               pointOnPlane.worldTransform.columns.3.z)
+            
+            selectedNode.position = newObjectPosition
+            selectedNode.audioIsPlaying = true // also makes object visible
+            
+            selectedImageView.image = greenImageVersion
+        }
     }
 }

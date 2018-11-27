@@ -57,22 +57,14 @@ extension ViewController {
         
         // make connections (like patching mixer)
         self.audioEngine.connect(self.audioEnvironment, to: self.mainMixer, format: self.stereo)
-        
         self.audioEngine.connect(self.deviceInput, to: self.deviceInputDummy, format: self.deviceInputFormat)
         
-        //////// TEST STUFF /////////
         // connect nodes from barrierNode (too see if I can even get this to work on input)
         for audioNode in self.barrierNode.audioNodesToAttach { self.audioEngine.attach(audioNode) }
         for audioMixer in self.barrierNode.mixersToConnect { self.audioEngine.connect(audioMixer, to: self.mainMixer, format: self.deviceInputFormat)}
-//        self.audioEngine.connect(self.barrierNode.mixerPostFilterLeft, to: self.mainMixer, format: self.deviceInputFormat)
-//        self.audioEngine.connect(self.barrierNode.mixerPostFilterRight, to: self.mainMixer, format: self.deviceInputFormat)
-//        self.audioEngine.connect(self.barrierNode.mixerPreFilterLeft, to: self.mainMixer, format: self.deviceInputFormat)
-//        self.audioEngine.connect(self.barrierNode.mixerPreFilterRight, to: self.mainMixer, format: self.deviceInputFormat)
         
         self.audioEngine.connect(self.deviceInputDummy, to: self.barrierNode.connectionPointsForDeviceInput, fromBus: 0, format: self.deviceInputFormat)
         self.audioEngine.connect(self.barrierNode.lowPassFilter, to: self.barrierNode.connectionPointsForFilterOutput, fromBus: 0, format: self.deviceInputFormat)
-        ////////////////////////////
-        
         
         self.mainMixer.installTap(onBus: 0, bufferSize: 2048, format: nil) {
             buffer, when in

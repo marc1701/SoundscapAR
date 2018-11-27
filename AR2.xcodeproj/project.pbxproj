@@ -14,8 +14,9 @@
 		9E20E1892191E7DC002E0F48 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E20E1872191E7DC002E0F48 /* AudioToolbox.framework */; };
 		9E20E18F2191E910002E0F48 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20E18E2191E910002E0F48 /* MovingAverage.swift */; };
 		9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */; };
-		9E5BC50C215BE7970060B6D8 /* ARAcousticBarrierNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */; };
+		9E5BC50C215BE7970060B6D8 /* ARAcousticBarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */; };
 		9E6496B62141736700B33DE4 /* synth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E6496B52141736700B33DE4 /* synth.m4a */; };
+		9E8686B221A32138007EDC98 /* ARAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8686B121A32138007EDC98 /* ARAudioNode.swift */; };
 		9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */; };
 		9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E88F5D3212C58DE00ECAD79 /* drums.m4a */; };
 		9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9D389D20DD6BD600500D82 /* AppDelegate.swift */; };
@@ -23,7 +24,8 @@
 		9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A120DD6BD600500D82 /* Main.storyboard */; };
 		9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A420DD6BD600500D82 /* Assets.xcassets */; };
 		9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */; };
-		9EAA31C72140228100944452 /* ARBinauralAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */; };
+		9EAA31C72140228100944452 /* ARBinauralAudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA31C62140228100944452 /* ARBinauralAudioSource.swift */; };
+		9EABCA99219F03640048CD1B /* crosshair_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EABCA98219F03640048CD1B /* crosshair_icon.png */; };
 		9EBA9DF8219B2F1000C769B6 /* cubeScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DF6219B2F1000C769B6 /* cubeScene.scn */; };
 		9EBA9DF9219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */; };
 		9EBA9DFE219B35A700C769B6 /* road_mono.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DFB219B35A700C769B6 /* road_mono.m4a */; };
@@ -54,8 +56,9 @@
 		9E20E1872191E7DC002E0F48 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9E20E18E2191E910002E0F48 /* MovingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
 		9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerARDelegates.swift; sourceTree = "<group>"; };
-		9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAcousticBarrierNode.swift; sourceTree = "<group>"; };
+		9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAcousticBarrier.swift; sourceTree = "<group>"; };
 		9E6496B52141736700B33DE4 /* synth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = synth.m4a; sourceTree = "<group>"; };
+		9E8686B121A32138007EDC98 /* ARAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudioNode.swift; sourceTree = "<group>"; };
 		9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioFuncs.swift; sourceTree = "<group>"; };
 		9E88F5D3212C58DE00ECAD79 /* drums.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.m4a; sourceTree = "<group>"; };
 		9E9D389A20DD6BD600500D82 /* AR2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +68,8 @@
 		9E9D38A420DD6BD600500D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E9D38A720DD6BD600500D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E9D38A920DD6BD600500D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBinauralAudioNode.swift; sourceTree = "<group>"; };
+		9EAA31C62140228100944452 /* ARBinauralAudioSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBinauralAudioSource.swift; sourceTree = "<group>"; };
+		9EABCA98219F03640048CD1B /* crosshair_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair_icon.png; sourceTree = "<group>"; };
 		9EBA9DF6219B2F1000C769B6 /* cubeScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cubeScene.scn; sourceTree = "<group>"; };
 		9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stone_Sa 15-16-49-641.jpg"; sourceTree = "<group>"; };
 		9EBA9DFB219B35A700C769B6 /* road_mono.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = road_mono.m4a; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		9E0FBCE721949A7E00E35FC4 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				9EABCA98219F03640048CD1B /* crosshair_icon.png */,
 				9EBA9E74219C646300C769B6 /* barrier_green.png */,
 				9EBA9E75219C646300C769B6 /* barrier_red.png */,
 				9EBA9E77219C646400C769B6 /* bird_green.png */,
@@ -207,8 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */,
-				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrierNode.swift */,
-				9EAA31C62140228100944452 /* ARBinauralAudioNode.swift */,
+				9E8686B121A32138007EDC98 /* ARAudioNode.swift */,
+				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */,
+				9EAA31C62140228100944452 /* ARBinauralAudioSource.swift */,
 			);
 			path = "Custom Classes";
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				9EBA9E7D219C646400C769B6 /* barrier_red.png in Resources */,
 				9EBA9DF9219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */,
 				9EBA9E7C219C646400C769B6 /* barrier_green.png in Resources */,
+				9EABCA99219F03640048CD1B /* crosshair_icon.png in Resources */,
 				9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */,
 				9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */,
 				9E0FBCE521949A4000E35FC4 /* barrier_icon.png in Resources */,
@@ -335,11 +342,12 @@
 				9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */,
 				9EBA9E0C219C36E200C769B6 /* ARSessionState.swift in Sources */,
 				9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */,
-				9EAA31C72140228100944452 /* ARBinauralAudioNode.swift in Sources */,
+				9EAA31C72140228100944452 /* ARBinauralAudioSource.swift in Sources */,
 				9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */,
-				9E5BC50C215BE7970060B6D8 /* ARAcousticBarrierNode.swift in Sources */,
+				9E5BC50C215BE7970060B6D8 /* ARAcousticBarrier.swift in Sources */,
 				9EBA9E0D219C36E200C769B6 /* VirtualPlane.swift in Sources */,
 				9E9D38A020DD6BD600500D82 /* ViewController.swift in Sources */,
+				9E8686B221A32138007EDC98 /* ARAudioNode.swift in Sources */,
 				9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */,
 				9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */,
 			);
@@ -484,9 +492,11 @@
 		9E9D38AD20DD6BD600500D82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WSYR763DJ;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AR2.xcodeproj",
@@ -508,9 +518,11 @@
 		9E9D38AE20DD6BD600500D82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WSYR763DJ;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AR2.xcodeproj",
