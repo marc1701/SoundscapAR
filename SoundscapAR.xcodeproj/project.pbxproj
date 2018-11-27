@@ -61,7 +61,7 @@
 		9E8686B121A32138007EDC98 /* ARAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudioNode.swift; sourceTree = "<group>"; };
 		9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioFuncs.swift; sourceTree = "<group>"; };
 		9E88F5D3212C58DE00ECAD79 /* drums.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.m4a; sourceTree = "<group>"; };
-		9E9D389A20DD6BD600500D82 /* AR2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E9D389A20DD6BD600500D82 /* SoundscapAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundscapAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9D389D20DD6BD600500D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E9D389F20DD6BD600500D82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9E9D38A220DD6BD600500D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stone_Sa 15-16-49-641.jpg"; sourceTree = "<group>"; };
 		9EBA9DFB219B35A700C769B6 /* road_mono.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = road_mono.m4a; sourceTree = "<group>"; };
 		9EBA9DFC219B35A700C769B6 /* fountain_mix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fountain_mix.m4a; sourceTree = "<group>"; };
-		9EBA9E01219B374C00C769B6 /* AR2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = AR2.xcodeproj; sourceTree = "<group>"; };
+		9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SoundscapAR.xcodeproj; sourceTree = "<group>"; };
 		9EBA9E04219B377700C769B6 /* birdsong_mono.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = birdsong_mono.m4a; sourceTree = "<group>"; };
 		9EBA9E08219C2C0500C769B6 /* AR_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR_icon.png; sourceTree = "<group>"; };
 		9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSessionState.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		9E9D389120DD6BD600500D82 = {
 			isa = PBXGroup;
 			children = (
-				9EBA9E01219B374C00C769B6 /* AR2.xcodeproj */,
+				9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */,
 				9E9D389C20DD6BD600500D82 /* AR2 */,
 				9E9D389B20DD6BD600500D82 /* Products */,
 				9E20E1852191E7DC002E0F48 /* Frameworks */,
@@ -184,7 +184,7 @@
 		9E9D389B20DD6BD600500D82 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E9D389A20DD6BD600500D82 /* AR2.app */,
+				9E9D389A20DD6BD600500D82 /* SoundscapAR.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,11 +201,6 @@
 				9E9D38A920DD6BD600500D82 /* Info.plist */,
 			);
 			path = AR2;
-			sourceTree = "<group>";
-		};
-		9EBA9E02219B374C00C769B6 /* Products */ = {
-			isa = PBXGroup;
-			name = Products;
 			sourceTree = "<group>";
 		};
 		9EBA9E0E219C3FD600C769B6 /* Custom Classes */ = {
@@ -243,9 +238,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9E9D389920DD6BD600500D82 /* AR2 */ = {
+		9E9D389920DD6BD600500D82 /* SoundscapAR */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E9D38AC20DD6BD600500D82 /* Build configuration list for PBXNativeTarget "AR2" */;
+			buildConfigurationList = 9E9D38AC20DD6BD600500D82 /* Build configuration list for PBXNativeTarget "SoundscapAR" */;
 			buildPhases = (
 				9E9D389620DD6BD600500D82 /* Sources */,
 				9E9D389720DD6BD600500D82 /* Frameworks */,
@@ -255,9 +250,9 @@
 			);
 			dependencies = (
 			);
-			name = AR2;
+			name = SoundscapAR;
 			productName = AR2;
-			productReference = 9E9D389A20DD6BD600500D82 /* AR2.app */;
+			productReference = 9E9D389A20DD6BD600500D82 /* SoundscapAR.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -275,7 +270,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9E9D389520DD6BD600500D82 /* Build configuration list for PBXProject "AR2" */;
+			buildConfigurationList = 9E9D389520DD6BD600500D82 /* Build configuration list for PBXProject "SoundscapAR" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -286,15 +281,9 @@
 			mainGroup = 9E9D389120DD6BD600500D82;
 			productRefGroup = 9E9D389B20DD6BD600500D82 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 9EBA9E02219B374C00C769B6 /* Products */;
-					ProjectRef = 9EBA9E01219B374C00C769B6 /* AR2.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				9E9D389920DD6BD600500D82 /* AR2 */,
+				9E9D389920DD6BD600500D82 /* SoundscapAR */,
 			);
 		};
 /* End PBXProject section */
@@ -508,7 +497,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = marc1701.AugReal;
+				PRODUCT_BUNDLE_IDENTIFIER = marc1701.SoundscapAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -534,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = marc1701.AugReal;
+				PRODUCT_BUNDLE_IDENTIFIER = marc1701.SoundscapAR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -544,7 +533,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E9D389520DD6BD600500D82 /* Build configuration list for PBXProject "AR2" */ = {
+		9E9D389520DD6BD600500D82 /* Build configuration list for PBXProject "SoundscapAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E9D38AA20DD6BD600500D82 /* Debug */,
@@ -553,7 +542,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E9D38AC20DD6BD600500D82 /* Build configuration list for PBXNativeTarget "AR2" */ = {
+		9E9D38AC20DD6BD600500D82 /* Build configuration list for PBXNativeTarget "SoundscapAR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E9D38AD20DD6BD600500D82 /* Debug */,
