@@ -15,10 +15,6 @@ class VirtualPlane: SCNNode {
     // implicitly unwrapped optional types!
     var anchor: ARAnchor!
     var planeGeometry: SCNPlane!
-    // we immediately fill these vars upon init,
-    // which is probably why we can implicitly unwrap it here
-    // e.g. constants we can't set immediately, as specified:
-    // https://stackoverflow.com/questions/24006975/why-create-implicitly-unwrapped-optionals-since-that-implies-you-know-theres
     
     init(anchor: ARPlaneAnchor) {
         super.init()
@@ -42,7 +38,7 @@ class VirtualPlane: SCNNode {
     // would be fairly easy to add options - almost seems like a bit of a waste of a func to me
     func initialisePlaneMaterial() -> SCNMaterial {
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.white.withAlphaComponent(0.1)
+        material.diffuse.contents = UIColor.white.withAlphaComponent(0) // completely transparent
         return material
     }
 

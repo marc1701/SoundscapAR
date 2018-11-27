@@ -14,7 +14,6 @@ class ARAcousticBarrier: ARAudioNode {
     
     override var audioIsPlaying: Bool {
         willSet {
-            print("done")
             self.isHidden = !newValue
             self.lowPassFilterParameters.frequency = 20000 // effectively disable the filter
         }
@@ -41,11 +40,9 @@ class ARAcousticBarrier: ARAudioNode {
     var panValue = Float.pi / 4 {
         willSet {
             self.gains = ["L": sin(newValue), "R": cos(newValue)]
-//            print(gains)
         }
     }
     
-    // will need to think about what geometry to use for this barrier object (and how to allow the user to change the size)
     fileprivate let sceneWithCubeRoot = SCNScene(named: "cubeScene.scn")?.rootNode
     var redMaterials = [SCNMaterial]()
     let blackMaterial = SCNMaterial()

@@ -12,25 +12,6 @@ import AVFoundation
 
 extension ViewController {
     
-//    func loadAudioFile(trackURL: URL) {
-//        guard let audioPlayerFile = try? AVAudioFile(forReading: trackURL)
-//            else { print("Error opening audio file"); return }
-//
-//        // set up audio buffer for loop playback
-//        guard let buffer = AVAudioPCMBuffer(pcmFormat: mono, frameCapacity: UInt32(audioPlayerFile.length)) else { print("PCM buffer set-up error"); return }
-//        buffer.frameLength = UInt32(audioPlayerFile.length)
-//
-//        do {
-//            try audioPlayerFile.read(into: buffer)
-//        } catch  {
-//            print("Buffer read failed.")
-//        }
-//
-//        audioBuffer = buffer
-//
-//    }
-    
-    
     func activateAudioSession() {
         // set up audio session
         do {
@@ -48,7 +29,6 @@ extension ViewController {
     func audioRoutingSetup() {
         
         // attach audioPlayer to the engine
-//        audioEngine.attach(audioPlayer)
         self.audioEngine.attach(self.audioEnvironment)
         self.audioEngine.attach(self.deviceInputDummy)
         
@@ -73,34 +53,30 @@ extension ViewController {
             guard let environmentalRatings = self.SVCClassifier.analyseAudioFrame(data)
                 else { print("Classifier ratings not returned."); return }
             
-            
             var naturalAverageToDisplay = 0.0
             var mechanicalAverageToDisplay = 0.0
             var humanAverageToDisplay = 0.0
             
             DispatchQueue.main.async {
-            
-            if self.audioAnalysisModeControl.selectedSegmentIndex == 1 &&
-                self.timerIsRunning == true { // timer has been selected and has not yet run out
-                
-                naturalAverageToDisplay = self.naturalOneMinuteAverage.addSample(value: environmentalRatings.natural)
-                mechanicalAverageToDisplay = self.mechanicalOneMinuteAverage.addSample(value: environmentalRatings.mechanical)
-                humanAverageToDisplay = self.humanOneMinuteAverage.addSample(value: environmentalRatings.human)
-            }
-            else if self.audioAnalysisModeControl.selectedSegmentIndex == 1 &&
-                self.timerIsRunning == false { // timer has been selected and run out
-                
-                naturalAverageToDisplay = self.naturalOneMinuteAverage.average
-                mechanicalAverageToDisplay = self.mechanicalOneMinuteAverage.average
-                humanAverageToDisplay = self.humanOneMinuteAverage.average
-            }
-            else if self.audioAnalysisModeControl.selectedSegmentIndex == 0 { // rolling average (default) selected
-                naturalAverageToDisplay = environmentalRatings.natural
-                mechanicalAverageToDisplay = environmentalRatings.mechanical
-                humanAverageToDisplay = environmentalRatings.human
-            }
-            
-            
+                if self.audioAnalysisModeControl.selectedSegmentIndex == 1 &&
+                    self.timerIsRunning == true { // timer has been selected and has not yet run out
+                    
+                    naturalAverageToDisplay = self.naturalOneMinuteAverage.addSample(value: environmentalRatings.natural)
+                    mechanicalAverageToDisplay = self.mechanicalOneMinuteAverage.addSample(value: environmentalRatings.mechanical)
+                    humanAverageToDisplay = self.humanOneMinuteAverage.addSample(value: environmentalRatings.human)
+                }
+                else if self.audioAnalysisModeControl.selectedSegmentIndex == 1 &&
+                    self.timerIsRunning == false { // timer has been selected and run out
+                    
+                    naturalAverageToDisplay = self.naturalOneMinuteAverage.average
+                    mechanicalAverageToDisplay = self.mechanicalOneMinuteAverage.average
+                    humanAverageToDisplay = self.humanOneMinuteAverage.average
+                }
+                else if self.audioAnalysisModeControl.selectedSegmentIndex == 0 { // rolling average selected
+                    naturalAverageToDisplay = environmentalRatings.natural
+                    mechanicalAverageToDisplay = environmentalRatings.mechanical
+                    humanAverageToDisplay = environmentalRatings.human
+                }
             
                 // set displayed values
                 self.naturalRatingText.text = String(format: "%.2f", naturalAverageToDisplay * 100)
@@ -112,11 +88,6 @@ extension ViewController {
                 self.humanRatingBar.progress = Float(humanAverageToDisplay * 3)
             }
         }
-        
-        
-//        self.audioEngine.connect(self.deviceInputDummy, to: self.mainMixer, format: self.deviceInputFormat)
-        print("Initial audio patching successful.")
-        
     }
     
     

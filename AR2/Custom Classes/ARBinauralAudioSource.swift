@@ -51,10 +51,6 @@ class ARBinauralAudioSource: ARAudioNode {
         // sceneKit bits
         guard let loadedGeometry = self.sceneWithCubeRoot?.childNode(withName: geometryName, recursively: true)?.geometry
             else { print("Fell down at the first hurdle"); return }
-//        self.redMaterials = loadedGeometry.materials
-        //        self.greenMaterial.diffuse.contents = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 1)
-        //        self.greenMaterial.selfIllumination.contents = #colorLiteral(red: 0, green: 0.5603182912, blue: 0, alpha: 1)
-        //        self.greenMaterial.specular.contents = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         self.geometry = loadedGeometry
         self.scale = geometryScaling
@@ -98,7 +94,6 @@ class ARBinauralAudioSource: ARAudioNode {
         }
         
         self.audioBuffer = buffer
-        print("Audio loaded successfully")
     }
     
     

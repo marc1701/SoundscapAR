@@ -12,11 +12,9 @@ extension ViewController: ARSCNViewDelegate, ARSessionDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
-//        guard let boxNode = sceneView.scene.rootNode.childNode(withName: "BoxyMcBoxFace", recursively: false) else { return }
         guard let camera = self.sceneView.session.currentFrame?.camera else { return }
         
-//        updateSourcePosition(withPositionOf: boxNode, forSource: audioPlayer)
-        updateListenerPositionAndOrientation(withPositionOf: camera, inEnvironment: self.audioEnvironment)
+        self.updateListenerPositionAndOrientation(withPositionOf: camera, inEnvironment: self.audioEnvironment)
         
         // light source intensity follows ambient light intensity
         guard let lightIntensityEstimate = sceneView.session.currentFrame?.lightEstimate?.ambientIntensity,

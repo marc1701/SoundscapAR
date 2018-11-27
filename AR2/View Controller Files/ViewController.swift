@@ -12,8 +12,6 @@ import CoreML
 import aubio
 
 class ViewController: UIViewController {
-
-    /// SETUP ///
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var MLDataView: UIView!
@@ -67,13 +65,7 @@ class ViewController: UIViewController {
     var sceneRootNode: SCNNode!
     
     var binauralNodes = [ARAudioNode]() //{
-//        willSet {
-//            guard let newNode = newValue.last else { return }
-//            self.sceneRootNode.addChildNode(newNode)
-//            self.audioEngine.attach(newNode.audioPlayer)
-//            self.audioEngine.connect(newNode.audioPlayer, to: self.audioEnvironment, format: mono)
-//        }
-//    }
+
     let naturalOneMinuteAverage = MovingAverage(period: 1292) // 1292 ≅ (44100 * 60) / 2048
     let mechanicalOneMinuteAverage = MovingAverage(period: 1292)
     let humanOneMinuteAverage = MovingAverage(period: 1292)
@@ -205,7 +197,7 @@ class ViewController: UIViewController {
         self.sceneView.session.run(configuration)
         
 //        self.sceneView.debugOptions = ARSCNDebugOptions.showWorldOrigin
-        self.sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+//        self.sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
         
         // resume sessionStatus
         if self.planes.count > 0 { self.sessionStatus = .ready }
@@ -359,7 +351,7 @@ class ViewController: UIViewController {
             self.readingTimerLabel.text = "(1 s)"
             self.timerIsRunning = false
         case 1:
-            let tint = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            let tint = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             sender.tintColor = tint
             self.humanRatingBar.tintColor = tint
             self.mechanicalRatingBar.tintColor = tint
@@ -392,7 +384,7 @@ class ViewController: UIViewController {
             
             self.timerIsRunning = false
             
-            let tint = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            let tint = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
             self.audioAnalysisModeControl.tintColor = tint
             self.humanRatingBar.tintColor = tint
             self.mechanicalRatingBar.tintColor = tint
