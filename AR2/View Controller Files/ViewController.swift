@@ -205,7 +205,7 @@ class ViewController: UIViewController {
         self.sceneView.session.run(configuration)
         
 //        self.sceneView.debugOptions = ARSCNDebugOptions.showWorldOrigin
-        sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
+        self.sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
         
         // resume sessionStatus
         if self.planes.count > 0 { self.sessionStatus = .ready }
@@ -221,24 +221,17 @@ class ViewController: UIViewController {
     }
     
     
-    
-    @IBAction func viewTappedOnce(_ sender: UITapGestureRecognizer) {
-//        let tapLocation = sender.location(in: self.sceneView)
-//        let hitTestResults = self.sceneView.hitTest(tapLocation)
-////
-//        guard let node = hitTestResults.first?.node as? ARBinauralAudioSource
-////            else { return }
-//
-//        let hitTestResults = self.sceneView.hitTest(self.objectSpawnPoint, types: .existingPlane)
-//        guard hitTestResults.count > 0, let pointOnPlane = hitTestResults.first else { return }
-////        node.audioToggle()
-//        barrierNode.audioIsPlaying = !barrierNode.audioIsPlaying
-//
-//        let newObjectPosition = SCNVector3Make(pointOnPlane.worldTransform.columns.3.x,
-//                                               pointOnPlane.worldTransform.columns.3.y,
-//                                               pointOnPlane.worldTransform.columns.3.z)
-//        barrierNode.position = newObjectPosition
-////        barrierNode.position
+    @IBAction func panAction(_ sender: UIPanGestureRecognizer) {
+        
+        let touchPoint = sender.location(in: self.sceneView)
+        let hitTestResults = self.sceneView.hitTest(touchPoint)
+
+        guard let selectedNode = hitTestResults.first?.node as? ARAudioNode else { return }
+        
+        let zConstant = self.sceneView.projectPoint(selectedNode.position).z
+        selectedNode.position = self.sceneView.unprojectPoint(SCNVector3(Float(touchPoint.x),
+                                                                         Float(touchPoint.y),
+                                                                         zConstant))
     }
     
     // could definitely collapse these three functions down into one

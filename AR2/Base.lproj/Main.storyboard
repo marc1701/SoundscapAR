@@ -20,6 +20,10 @@
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQw-G2-Ayo">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="rzG-Kj-hYh" appends="YES" id="yv9-0r-aWH"/>
+                                </connections>
                             </arscnView>
                             <view opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBS-PU-dJu">
                                 <rect key="frame" x="20" y="20" width="335" height="335"/>
@@ -321,9 +325,6 @@
                             <constraint firstItem="pky-Iv-V6t" firstAttribute="top" secondItem="eBS-PU-dJu" secondAttribute="top" id="vE2-S7-FIs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="keF-HP-CDI"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="S9Q-WB-I3Q" appends="YES" id="9kt-yD-val"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="ARBigLabel" destination="rbE-Tj-8hh" id="56H-1G-QEC"/>
@@ -352,11 +353,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="S9Q-WB-I3Q">
+                <panGestureRecognizer minimumNumberOfTouches="1" id="rzG-Kj-hYh">
                     <connections>
-                        <action selector="viewTappedOnce:" destination="BYZ-38-t0r" id="eEs-ya-xk4"/>
+                        <action selector="panAction:" destination="BYZ-38-t0r" id="Gwj-Ys-gPc"/>
                     </connections>
-                </tapGestureRecognizer>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2.4456521739130435" y="133.33333333333334"/>
         </scene>
