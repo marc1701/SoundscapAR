@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9E0FBCE321949A4000E35FC4 /* audio_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E0FBCE021949A3F00E35FC4 /* audio_icon.png */; };
+		9E0FBCE421949A4000E35FC4 /* ML_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E0FBCE121949A3F00E35FC4 /* ML_icon.png */; };
+		9E0FBCE521949A4000E35FC4 /* barrier_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E0FBCE221949A4000E35FC4 /* barrier_icon.png */; };
+		9E20E1882191E7DC002E0F48 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E20E1862191E7DC002E0F48 /* Accelerate.framework */; };
+		9E20E1892191E7DC002E0F48 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E20E1872191E7DC002E0F48 /* AudioToolbox.framework */; };
+		9E20E18F2191E910002E0F48 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20E18E2191E910002E0F48 /* MovingAverage.swift */; };
+		9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */; };
+		9E5BC50C215BE7970060B6D8 /* ARAcousticBarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */; };
+		9E6496B62141736700B33DE4 /* synth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E6496B52141736700B33DE4 /* synth.m4a */; };
+		9E79009A21ADB8EE006E4793 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E79009921ADB8EE006E4793 /* Default-568h@2x.png */; };
+		9E8686B221A32138007EDC98 /* ARAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8686B121A32138007EDC98 /* ARAudioNode.swift */; };
+		9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */; };
+		9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E88F5D3212C58DE00ECAD79 /* drums.m4a */; };
+		9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9D389D20DD6BD600500D82 /* AppDelegate.swift */; };
+		9E9D38A020DD6BD600500D82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9D389F20DD6BD600500D82 /* ViewController.swift */; };
+		9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A120DD6BD600500D82 /* Main.storyboard */; };
+		9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A420DD6BD600500D82 /* Assets.xcassets */; };
+		9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */; };
+		9EAA31C72140228100944452 /* ARBinauralAudioSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAA31C62140228100944452 /* ARBinauralAudioSource.swift */; };
+		9EABCA99219F03640048CD1B /* crosshair_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EABCA98219F03640048CD1B /* crosshair_icon.png */; };
+		9EBA9DF8219B2F1000C769B6 /* cubeScene.scn in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DF6219B2F1000C769B6 /* cubeScene.scn */; };
+		9EBA9DF9219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */; };
+		9EBA9DFE219B35A700C769B6 /* road_mono.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DFB219B35A700C769B6 /* road_mono.m4a */; };
+		9EBA9DFF219B35A700C769B6 /* fountain_mix.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9DFC219B35A700C769B6 /* fountain_mix.m4a */; };
+		9EBA9E05219B377700C769B6 /* birdsong_mono.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E04219B377700C769B6 /* birdsong_mono.m4a */; };
+		9EBA9E09219C2C0500C769B6 /* AR_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E08219C2C0500C769B6 /* AR_icon.png */; };
+		9EBA9E0C219C36E200C769B6 /* ARSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */; };
+		9EBA9E0D219C36E200C769B6 /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */; };
+		9EBA9E7B219C646400C769B6 /* fountain_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E73219C646300C769B6 /* fountain_green.png */; };
+		9EBA9E7C219C646400C769B6 /* barrier_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E74219C646300C769B6 /* barrier_green.png */; };
+		9EBA9E7D219C646400C769B6 /* barrier_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E75219C646300C769B6 /* barrier_red.png */; };
+		9EBA9E7E219C646400C769B6 /* car_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E76219C646400C769B6 /* car_green.png */; };
+		9EBA9E7F219C646400C769B6 /* bird_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E77219C646400C769B6 /* bird_green.png */; };
+		9EBA9E80219C646400C769B6 /* car_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E78219C646400C769B6 /* car_red.png */; };
+		9EBA9E81219C646400C769B6 /* fountain_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E79219C646400C769B6 /* fountain_red.png */; };
+		9EBA9E82219C646400C769B6 /* bird_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 9EBA9E7A219C646400C769B6 /* bird_red.png */; };
+		9EE03B7F21944F860015F27B /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE03B7E21944F860015F27B /* aubio.framework */; };
+		9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */; };
+		9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */; };
+		9EE03B85219455FA0015F27B /* MFCC_SVC.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9EE03B83219455FA0015F27B /* MFCC_SVC.mlmodel */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9E0FBCE021949A3F00E35FC4 /* audio_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = audio_icon.png; sourceTree = "<group>"; };
+		9E0FBCE121949A3F00E35FC4 /* ML_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ML_icon.png; sourceTree = "<group>"; };
+		9E0FBCE221949A4000E35FC4 /* barrier_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrier_icon.png; sourceTree = "<group>"; };
+		9E20E1862191E7DC002E0F48 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9E20E1872191E7DC002E0F48 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9E20E18E2191E910002E0F48 /* MovingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
+		9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerARDelegates.swift; sourceTree = "<group>"; };
+		9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAcousticBarrier.swift; sourceTree = "<group>"; };
+		9E6496B52141736700B33DE4 /* synth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = synth.m4a; sourceTree = "<group>"; };
+		9E79009921ADB8EE006E4793 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9E8686B121A32138007EDC98 /* ARAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudioNode.swift; sourceTree = "<group>"; };
+		9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioFuncs.swift; sourceTree = "<group>"; };
+		9E88F5D3212C58DE00ECAD79 /* drums.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.m4a; sourceTree = "<group>"; };
+		9E9D389A20DD6BD600500D82 /* SoundscapAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundscapAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E9D389D20DD6BD600500D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9E9D389F20DD6BD600500D82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9E9D38A220DD6BD600500D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9E9D38A420DD6BD600500D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9E9D38A720DD6BD600500D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9E9D38A920DD6BD600500D82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EAA31C62140228100944452 /* ARBinauralAudioSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBinauralAudioSource.swift; sourceTree = "<group>"; };
+		9EABCA98219F03640048CD1B /* crosshair_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair_icon.png; sourceTree = "<group>"; };
+		9EBA9DF6219B2F1000C769B6 /* cubeScene.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cubeScene.scn; sourceTree = "<group>"; };
+		9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stone_Sa 15-16-49-641.jpg"; sourceTree = "<group>"; };
+		9EBA9DFB219B35A700C769B6 /* road_mono.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = road_mono.m4a; sourceTree = "<group>"; };
+		9EBA9DFC219B35A700C769B6 /* fountain_mix.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fountain_mix.m4a; sourceTree = "<group>"; };
+		9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SoundscapAR.xcodeproj; sourceTree = "<group>"; };
+		9EBA9E04219B377700C769B6 /* birdsong_mono.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = birdsong_mono.m4a; sourceTree = "<group>"; };
+		9EBA9E08219C2C0500C769B6 /* AR_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AR_icon.png; sourceTree = "<group>"; };
+		9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARSessionState.swift; sourceTree = "<group>"; };
+		9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		9EBA9E73219C646300C769B6 /* fountain_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_green.png; sourceTree = "<group>"; };
+		9EBA9E74219C646300C769B6 /* barrier_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrier_green.png; sourceTree = "<group>"; };
+		9EBA9E75219C646300C769B6 /* barrier_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barrier_red.png; sourceTree = "<group>"; };
+		9EBA9E76219C646400C769B6 /* car_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_green.png; sourceTree = "<group>"; };
+		9EBA9E77219C646400C769B6 /* bird_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_green.png; sourceTree = "<group>"; };
+		9EBA9E78219C646400C769B6 /* car_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = car_red.png; sourceTree = "<group>"; };
+		9EBA9E79219C646400C769B6 /* fountain_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fountain_red.png; sourceTree = "<group>"; };
+		9EBA9E7A219C646400C769B6 /* bird_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird_red.png; sourceTree = "<group>"; };
+		9EE03B7E21944F860015F27B /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = aubio.framework; sourceTree = "<group>"; };
+		9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalAudioAnalyser.swift; sourceTree = "<group>"; };
+		9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MFCC_Scaler.mlmodel; sourceTree = "<group>"; };
+		9EE03B83219455FA0015F27B /* MFCC_SVC.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MFCC_SVC.mlmodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9E9D389720DD6BD600500D82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E20E1882191E7DC002E0F48 /* Accelerate.framework in Frameworks */,
+				9EE03B7F21944F860015F27B /* aubio.framework in Frameworks */,
+				9E20E1892191E7DC002E0F48 /* AudioToolbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9E0FBCE621949A6400E35FC4 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				9EBA9E04219B377700C769B6 /* birdsong_mono.m4a */,
+				9EBA9DFC219B35A700C769B6 /* fountain_mix.m4a */,
+				9EBA9DFB219B35A700C769B6 /* road_mono.m4a */,
+				9E6496B52141736700B33DE4 /* synth.m4a */,
+				9E88F5D3212C58DE00ECAD79 /* drums.m4a */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		9E0FBCE721949A7E00E35FC4 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				9EABCA98219F03640048CD1B /* crosshair_icon.png */,
+				9EBA9E74219C646300C769B6 /* barrier_green.png */,
+				9EBA9E75219C646300C769B6 /* barrier_red.png */,
+				9EBA9E77219C646400C769B6 /* bird_green.png */,
+				9EBA9E7A219C646400C769B6 /* bird_red.png */,
+				9EBA9E76219C646400C769B6 /* car_green.png */,
+				9EBA9E78219C646400C769B6 /* car_red.png */,
+				9EBA9E73219C646300C769B6 /* fountain_green.png */,
+				9EBA9E79219C646400C769B6 /* fountain_red.png */,
+				9EBA9E08219C2C0500C769B6 /* AR_icon.png */,
+				9E0FBCE021949A3F00E35FC4 /* audio_icon.png */,
+				9E0FBCE121949A3F00E35FC4 /* ML_icon.png */,
+				9E0FBCE221949A4000E35FC4 /* barrier_icon.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		9E0FBCE821949A9000E35FC4 /* CoreML Models */ = {
+			isa = PBXGroup;
+			children = (
+				9EE03B82219455FA0015F27B /* MFCC_Scaler.mlmodel */,
+				9EE03B83219455FA0015F27B /* MFCC_SVC.mlmodel */,
+			);
+			path = "CoreML Models";
+			sourceTree = "<group>";
+		};
+		9E20E1852191E7DC002E0F48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9EE03B7E21944F860015F27B /* aubio.framework */,
+				9E20E1862191E7DC002E0F48 /* Accelerate.framework */,
+				9E20E1872191E7DC002E0F48 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E6496B22141310900B33DE4 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				9E0FBCE621949A6400E35FC4 /* Audio */,
+				9E0FBCE821949A9000E35FC4 /* CoreML Models */,
+				9E0FBCE721949A7E00E35FC4 /* Icons */,
+				9EBA9DF7219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg */,
+				9E79009921ADB8EE006E4793 /* Default-568h@2x.png */,
+				9EBA9DF6219B2F1000C769B6 /* cubeScene.scn */,
+				9E9D38A420DD6BD600500D82 /* Assets.xcassets */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		9E79009721ADB7DF006E4793 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E9D389120DD6BD600500D82 = {
+			isa = PBXGroup;
+			children = (
+				9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */,
+				9E9D389C20DD6BD600500D82 /* SoundscapAR */,
+				9E9D389B20DD6BD600500D82 /* Products */,
+				9E20E1852191E7DC002E0F48 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9E9D389B20DD6BD600500D82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E9D389A20DD6BD600500D82 /* SoundscapAR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E9D389C20DD6BD600500D82 /* SoundscapAR */ = {
+			isa = PBXGroup;
+			children = (
+				9E6496B22141310900B33DE4 /* Media */,
+				9EBA9E0E219C3FD600C769B6 /* Custom Classes */,
+				9EBA9E0F219C3FE400C769B6 /* Tutorial Classes */,
+				9EBA9E10219C3FF200C769B6 /* View Controller Files */,
+				9E9D38A120DD6BD600500D82 /* Main.storyboard */,
+				9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */,
+				9E9D38A920DD6BD600500D82 /* Info.plist */,
+			);
+			path = SoundscapAR;
+			sourceTree = "<group>";
+		};
+		9EBA9E0E219C3FD600C769B6 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9EE03B802194505C0015F27B /* EnvironmentalAudioAnalyser.swift */,
+				9E8686B121A32138007EDC98 /* ARAudioNode.swift */,
+				9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */,
+				9EAA31C62140228100944452 /* ARBinauralAudioSource.swift */,
+			);
+			path = "Custom Classes";
+			sourceTree = "<group>";
+		};
+		9EBA9E0F219C3FE400C769B6 /* Tutorial Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9EBA9E0A219C36E200C769B6 /* ARSessionState.swift */,
+				9EBA9E0B219C36E200C769B6 /* VirtualPlane.swift */,
+				9E20E18E2191E910002E0F48 /* MovingAverage.swift */,
+			);
+			path = "Tutorial Classes";
+			sourceTree = "<group>";
+		};
+		9EBA9E10219C3FF200C769B6 /* View Controller Files */ = {
+			isa = PBXGroup;
+			children = (
+				9E9D389D20DD6BD600500D82 /* AppDelegate.swift */,
+				9E9D389F20DD6BD600500D82 /* ViewController.swift */,
+				9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */,
+				9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */,
+			);
+			path = "View Controller Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9E9D389920DD6BD600500D82 /* SoundscapAR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E9D38AC20DD6BD600500D82 /* Build configuration list for PBXNativeTarget "SoundscapAR" */;
+			buildPhases = (
+				9E9D389620DD6BD600500D82 /* Sources */,
+				9E9D389720DD6BD600500D82 /* Frameworks */,
+				9E9D389820DD6BD600500D82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SoundscapAR;
+			productName = AR2;
+			productReference = 9E9D389A20DD6BD600500D82 /* SoundscapAR.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9E9D389220DD6BD600500D82 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Marc Green";
+				TargetAttributes = {
+					9E9D389920DD6BD600500D82 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
+					};
+				};
+			};
+			buildConfigurationList = 9E9D389520DD6BD600500D82 /* Build configuration list for PBXProject "SoundscapAR" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9E9D389120DD6BD600500D82;
+			productRefGroup = 9E9D389B20DD6BD600500D82 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9E79009721ADB7DF006E4793 /* Products */;
+					ProjectRef = 9EBA9E01219B374C00C769B6 /* SoundscapAR.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9E9D389920DD6BD600500D82 /* SoundscapAR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9E9D389820DD6BD600500D82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EBA9E82219C646400C769B6 /* bird_red.png in Resources */,
+				9E0FBCE421949A4000E35FC4 /* ML_icon.png in Resources */,
+				9EBA9DFF219B35A700C769B6 /* fountain_mix.m4a in Resources */,
+				9EBA9E80219C646400C769B6 /* car_red.png in Resources */,
+				9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */,
+				9E79009A21ADB8EE006E4793 /* Default-568h@2x.png in Resources */,
+				9E6496B62141736700B33DE4 /* synth.m4a in Resources */,
+				9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */,
+				9EBA9E7F219C646400C769B6 /* bird_green.png in Resources */,
+				9EBA9E09219C2C0500C769B6 /* AR_icon.png in Resources */,
+				9EBA9E81219C646400C769B6 /* fountain_red.png in Resources */,
+				9EBA9E05219B377700C769B6 /* birdsong_mono.m4a in Resources */,
+				9EBA9DF8219B2F1000C769B6 /* cubeScene.scn in Resources */,
+				9EBA9E7E219C646400C769B6 /* car_green.png in Resources */,
+				9E0FBCE321949A4000E35FC4 /* audio_icon.png in Resources */,
+				9EBA9E7B219C646400C769B6 /* fountain_green.png in Resources */,
+				9EBA9E7D219C646400C769B6 /* barrier_red.png in Resources */,
+				9EBA9DF9219B2F1000C769B6 /* Stone_Sa 15-16-49-641.jpg in Resources */,
+				9EBA9E7C219C646400C769B6 /* barrier_green.png in Resources */,
+				9EABCA99219F03640048CD1B /* crosshair_icon.png in Resources */,
+				9E9D38A520DD6BD600500D82 /* Assets.xcassets in Resources */,
+				9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */,
+				9E0FBCE521949A4000E35FC4 /* barrier_icon.png in Resources */,
+				9EBA9DFE219B35A700C769B6 /* road_mono.m4a in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9E9D389620DD6BD600500D82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EE03B85219455FA0015F27B /* MFCC_SVC.mlmodel in Sources */,
+				9E20E18F2191E910002E0F48 /* MovingAverage.swift in Sources */,
+				9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */,
+				9EBA9E0C219C36E200C769B6 /* ARSessionState.swift in Sources */,
+				9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */,
+				9EAA31C72140228100944452 /* ARBinauralAudioSource.swift in Sources */,
+				9EE03B812194505C0015F27B /* EnvironmentalAudioAnalyser.swift in Sources */,
+				9E5BC50C215BE7970060B6D8 /* ARAcousticBarrier.swift in Sources */,
+				9EBA9E0D219C36E200C769B6 /* VirtualPlane.swift in Sources */,
+				9E9D38A020DD6BD600500D82 /* ViewController.swift in Sources */,
+				9E8686B221A32138007EDC98 /* ARAudioNode.swift in Sources */,
+				9EE03B84219455FA0015F27B /* MFCC_Scaler.mlmodel in Sources */,
+				9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9E9D38A120DD6BD600500D82 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E9D38A220DD6BD600500D82 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9E9D38A620DD6BD600500D82 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E9D38A720DD6BD600500D82 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9E9D38AA20DD6BD600500D82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9E9D38AB20DD6BD600500D82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9E9D38AD20DD6BD600500D82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3WSYR763DJ;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SoundscapAR.xcodeproj",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SoundscapAR",
+				);
+				INFOPLIST_FILE = SoundscapAR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = marc1701.SoundscapAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9E9D38AE20DD6BD600500D82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3WSYR763DJ;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SoundscapAR.xcodeproj",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SoundscapAR",
+				);
+				INFOPLIST_FILE = SoundscapAR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = marc1701.SoundscapAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9E9D389520DD6BD600500D82 /* Build configuration list for PBXProject "SoundscapAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E9D38AA20DD6BD600500D82 /* Debug */,
+				9E9D38AB20DD6BD600500D82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E9D38AC20DD6BD600500D82 /* Build configuration list for PBXNativeTarget "SoundscapAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9E9D38AD20DD6BD600500D82 /* Debug */,
+				9E9D38AE20DD6BD600500D82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9E9D389220DD6BD600500D82 /* Project object */;
+}
