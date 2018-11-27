@@ -24,6 +24,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var naturalRatingBar: UIProgressView!
     @IBOutlet weak var mechanicalRatingBar: UIProgressView!
     
+    @IBOutlet weak var audioAnalysisModeControl: UISegmentedControl!
+    @IBOutlet weak var readingTimerLabel: UILabel!
+    @IBOutlet weak var audioAnalysisTitle: UITextField!
+    
     @IBOutlet weak var humanRatingText: UITextField!
     @IBOutlet weak var naturalRatingText: UITextField!
     @IBOutlet weak var mechanicalRatingText: UITextField!
@@ -70,6 +74,13 @@ class ViewController: UIViewController {
 //            self.audioEngine.connect(newNode.audioPlayer, to: self.audioEnvironment, format: mono)
 //        }
 //    }
+    let naturalOneMinuteAverage = MovingAverage(period: 1292) // 1292 ≅ (44100 * 60) / 2048
+    let mechanicalOneMinuteAverage = MovingAverage(period: 1292)
+    let humanOneMinuteAverage = MovingAverage(period: 1292)
+    
+    var timeRemaining = 60 // seconds
+    var timer = Timer()
+    var timerIsRunning = false
     
     let deviceInputDummy = AVAudioMixerNode()
     
@@ -337,4 +348,65 @@ class ViewController: UIViewController {
             selectedImageView.image = greenImageVersion
         }
     }
+    
+    
+    @IBAction func audioAnalysisModeSelected(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            let tint = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            sender.tintColor = tint
+            self.humanRatingBar.tintColor = tint
+            self.mechanicalRatingBar.tintColor = tint
+            self.naturalRatingBar.tintColor = tint
+            
+            self.timer.invalidate()
+            self.timeRemaining = 60 // reset
+            self.audioAnalysisTitle.text = "Rolling Audio Analysis"
+            self.readingTimerLabel.text = "(1 s)"
+            self.timerIsRunning = false
+        case 1:
+            let tint = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+            sender.tintColor = tint
+            self.humanRatingBar.tintColor = tint
+            self.mechanicalRatingBar.tintColor = tint
+            self.naturalRatingBar.tintColor = tint
+            
+            self.audioAnalysisTitle.text = "Timed Audio Analysis"
+            self.readingTimerLabel.text = "(60 s Remaining)"
+            
+            self.naturalOneMinuteAverage.samples.removeAll()
+            self.mechanicalOneMinuteAverage.samples.removeAll()
+            self.humanOneMinuteAverage.samples.removeAll()
+            
+            self.runTimer()
+        default:
+            return
+        }
+    }
+    
+    func runTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(self.updateTimer)), userInfo: nil, repeats: true)
+        self.timerIsRunning = true
+    }
+    
+    @objc func updateTimer() {
+        self.timeRemaining -= 1     //This will decrement(count down)the seconds.
+        self.readingTimerLabel.text = "(\(self.timeRemaining) s Remaining)" //This will update the label.
+        
+        if self.timeRemaining == 0 {
+            self.timer.invalidate()
+            
+            self.timerIsRunning = false
+            
+            let tint = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+            self.audioAnalysisModeControl.tintColor = tint
+            self.humanRatingBar.tintColor = tint
+            self.mechanicalRatingBar.tintColor = tint
+            self.naturalRatingBar.tintColor = tint
+        }
+        
+        
+    }
+    
 }

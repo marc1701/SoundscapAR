@@ -73,15 +73,43 @@ extension ViewController {
             guard let environmentalRatings = self.SVCClassifier.analyseAudioFrame(data)
                 else { print("Classifier ratings not returned."); return }
             
+            
+            var naturalAverageToDisplay = 0.0
+            var mechanicalAverageToDisplay = 0.0
+            var humanAverageToDisplay = 0.0
+            
             DispatchQueue.main.async {
-                // set displayed values
-                self.naturalRatingText.text = String(format: "%.2f", environmentalRatings.natural * 100)
-                self.mechanicalRatingText.text = String(format: "%.2f", environmentalRatings.mechanical * 100)
-                self.humanRatingText.text = String(format: "%.2f", environmentalRatings.human * 100)
+            
+            if self.audioAnalysisModeControl.selectedSegmentIndex == 1 &&
+                self.timerIsRunning == true { // timer has been selected and has not yet run out
                 
-                self.naturalRatingBar.progress = Float(environmentalRatings.natural * 3)
-                self.mechanicalRatingBar.progress = Float(environmentalRatings.mechanical * 3)
-                self.humanRatingBar.progress = Float(environmentalRatings.human * 3)
+                naturalAverageToDisplay = self.naturalOneMinuteAverage.addSample(value: environmentalRatings.natural)
+                mechanicalAverageToDisplay = self.mechanicalOneMinuteAverage.addSample(value: environmentalRatings.mechanical)
+                humanAverageToDisplay = self.humanOneMinuteAverage.addSample(value: environmentalRatings.human)
+            }
+            else if self.audioAnalysisModeControl.selectedSegmentIndex == 1 &&
+                self.timerIsRunning == false { // timer has been selected and run out
+                
+                naturalAverageToDisplay = self.naturalOneMinuteAverage.average
+                mechanicalAverageToDisplay = self.mechanicalOneMinuteAverage.average
+                humanAverageToDisplay = self.humanOneMinuteAverage.average
+            }
+            else if self.audioAnalysisModeControl.selectedSegmentIndex == 0 { // rolling average (default) selected
+                naturalAverageToDisplay = environmentalRatings.natural
+                mechanicalAverageToDisplay = environmentalRatings.mechanical
+                humanAverageToDisplay = environmentalRatings.human
+            }
+            
+            
+            
+                // set displayed values
+                self.naturalRatingText.text = String(format: "%.2f", naturalAverageToDisplay * 100)
+                self.mechanicalRatingText.text = String(format: "%.2f", mechanicalAverageToDisplay * 100)
+                self.humanRatingText.text = String(format: "%.2f", humanAverageToDisplay * 100)
+                
+                self.naturalRatingBar.progress = Float(naturalAverageToDisplay * 3)
+                self.mechanicalRatingBar.progress = Float(mechanicalAverageToDisplay * 3)
+                self.humanRatingBar.progress = Float(humanAverageToDisplay * 3)
             }
         }
         

@@ -33,8 +33,8 @@
                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5S6-ah-FXF">
                                         <rect key="frame" x="40" y="203" width="255" height="2"/>
                                     </progressView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Audio Scene Analysis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QmK-Mv-Tfu">
-                                        <rect key="frame" x="57" y="40" width="221" height="21"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Rolling Audio Analysis" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QmK-Mv-Tfu">
+                                        <rect key="frame" x="46" y="40" width="243" height="21"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -75,14 +75,33 @@
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ezV-tj-92O">
+                                        <rect key="frame" x="80" y="283" width="175" height="29"/>
+                                        <segments>
+                                            <segment title="Rolling"/>
+                                            <segment title="One-Minute"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="audioAnalysisModeSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="WnY-15-mHD"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rolling Average (1 s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6Q-a4-r6b">
+                                        <rect key="frame" x="60" y="77" width="215" height="20"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="5S6-ah-FXF" firstAttribute="top" secondItem="H1O-DE-KNB" secondAttribute="bottom" constant="8" id="2A4-8b-Hve"/>
+                                    <constraint firstItem="m6Q-a4-r6b" firstAttribute="top" secondItem="QmK-Mv-Tfu" secondAttribute="bottom" constant="16" id="4R4-dq-WRH"/>
                                     <constraint firstItem="5S6-ah-FXF" firstAttribute="top" secondItem="UAT-dv-hVd" secondAttribute="bottom" constant="8" id="64c-hw-CK1"/>
                                     <constraint firstItem="5S6-ah-FXF" firstAttribute="leading" secondItem="H1O-DE-KNB" secondAttribute="leading" id="8SZ-JN-y4i"/>
                                     <constraint firstItem="aih-yo-LBR" firstAttribute="top" secondItem="7xJ-Tz-H8r" secondAttribute="bottom" constant="8" id="ALm-ed-JPz"/>
+                                    <constraint firstItem="ezV-tj-92O" firstAttribute="top" secondItem="aih-yo-LBR" secondAttribute="bottom" constant="16" id="AYb-rd-iRg"/>
+                                    <constraint firstItem="m6Q-a4-r6b" firstAttribute="centerX" secondItem="eBS-PU-dJu" secondAttribute="centerX" id="EbQ-O0-yoc"/>
                                     <constraint firstItem="5S6-ah-FXF" firstAttribute="top" secondItem="Zqx-K4-SRs" secondAttribute="bottom" constant="60" id="GOQ-Qh-vaY"/>
                                     <constraint firstItem="Zqx-K4-SRs" firstAttribute="top" secondItem="QmK-Mv-Tfu" secondAttribute="bottom" constant="80" id="HTN-AV-heH"/>
                                     <constraint firstItem="QmK-Mv-Tfu" firstAttribute="top" secondItem="eBS-PU-dJu" secondAttribute="top" constant="40" id="Imb-ZY-Y60"/>
@@ -97,6 +116,7 @@
                                     <constraint firstItem="aih-yo-LBR" firstAttribute="top" secondItem="zgO-gc-vU2" secondAttribute="bottom" constant="8" id="YOk-DC-Fvi"/>
                                     <constraint firstItem="aih-yo-LBR" firstAttribute="trailing" secondItem="Zqx-K4-SRs" secondAttribute="trailing" id="ban-0G-iXE"/>
                                     <constraint firstItem="Zqx-K4-SRs" firstAttribute="top" secondItem="Hic-CE-P37" secondAttribute="bottom" constant="8" id="d1v-gx-Xj8"/>
+                                    <constraint firstItem="ezV-tj-92O" firstAttribute="centerX" secondItem="eBS-PU-dJu" secondAttribute="centerX" id="dUK-fO-Vzy"/>
                                     <constraint firstItem="QmK-Mv-Tfu" firstAttribute="centerX" secondItem="eBS-PU-dJu" secondAttribute="centerX" id="hS0-j0-Fir"/>
                                     <constraint firstItem="Etk-Wi-vAd" firstAttribute="trailing" secondItem="Zqx-K4-SRs" secondAttribute="trailing" id="lSU-kq-nt6"/>
                                     <constraint firstItem="aih-yo-LBR" firstAttribute="leading" secondItem="7xJ-Tz-H8r" secondAttribute="leading" id="mgW-So-osT"/>
@@ -311,6 +331,8 @@
                         <outlet property="ARInfoView" destination="pky-Iv-V6t" id="Sdl-RW-7c9"/>
                         <outlet property="MLDataButton" destination="1Xm-8U-uQY" id="mY9-Ak-yct"/>
                         <outlet property="MLDataView" destination="eBS-PU-dJu" id="NeI-gu-xbc"/>
+                        <outlet property="audioAnalysisModeControl" destination="ezV-tj-92O" id="xOI-nB-omV"/>
+                        <outlet property="audioAnalysisTitle" destination="QmK-Mv-Tfu" id="Bfp-E6-fKo"/>
                         <outlet property="barrierImage" destination="igU-wN-COo" id="7SW-6f-Sff"/>
                         <outlet property="birdImage" destination="U2C-cC-kgU" id="Bhm-ZR-90I"/>
                         <outlet property="carImage" destination="ROu-5v-4Q4" id="t9U-pD-Tbw"/>
@@ -324,6 +346,7 @@
                         <outlet property="objectSelectionButton" destination="3zu-2v-MmP" id="VqB-4s-nlg"/>
                         <outlet property="objectSelectionView" destination="DVl-w1-Ul0" id="tG8-JP-QWy"/>
                         <outlet property="objectSpawnPointCrosshairs" destination="Anm-Q1-QoY" id="Bxd-hM-vTM"/>
+                        <outlet property="readingTimerLabel" destination="m6Q-a4-r6b" id="t0g-MI-0Mk"/>
                         <outlet property="sceneView" destination="mQw-G2-Ayo" id="ceU-Z7-duD"/>
                         <outlet property="userInstructionLabel" destination="ava-Sp-9dh" id="fEe-IP-kC3"/>
                     </connections>
