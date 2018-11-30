@@ -15,11 +15,9 @@
 		9E20E18F2191E910002E0F48 /* MovingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E20E18E2191E910002E0F48 /* MovingAverage.swift */; };
 		9E59B06F2118A147007221B7 /* ViewControllerARDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */; };
 		9E5BC50C215BE7970060B6D8 /* ARAcousticBarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */; };
-		9E6496B62141736700B33DE4 /* synth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E6496B52141736700B33DE4 /* synth.m4a */; };
 		9E79009A21ADB8EE006E4793 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E79009921ADB8EE006E4793 /* Default-568h@2x.png */; };
 		9E8686B221A32138007EDC98 /* ARAudioNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8686B121A32138007EDC98 /* ARAudioNode.swift */; };
 		9E88F5D2212C49BB00ECAD79 /* ViewControllerAudioFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */; };
-		9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 9E88F5D3212C58DE00ECAD79 /* drums.m4a */; };
 		9E9D389E20DD6BD600500D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9D389D20DD6BD600500D82 /* AppDelegate.swift */; };
 		9E9D38A020DD6BD600500D82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9D389F20DD6BD600500D82 /* ViewController.swift */; };
 		9E9D38A320DD6BD600500D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E9D38A120DD6BD600500D82 /* Main.storyboard */; };
@@ -58,11 +56,9 @@
 		9E20E18E2191E910002E0F48 /* MovingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovingAverage.swift; sourceTree = "<group>"; };
 		9E59B06E2118A147007221B7 /* ViewControllerARDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerARDelegates.swift; sourceTree = "<group>"; };
 		9E5BC50B215BE7970060B6D8 /* ARAcousticBarrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARAcousticBarrier.swift; sourceTree = "<group>"; };
-		9E6496B52141736700B33DE4 /* synth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = synth.m4a; sourceTree = "<group>"; };
 		9E79009921ADB8EE006E4793 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9E8686B121A32138007EDC98 /* ARAudioNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudioNode.swift; sourceTree = "<group>"; };
 		9E88F5D1212C49BA00ECAD79 /* ViewControllerAudioFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAudioFuncs.swift; sourceTree = "<group>"; };
-		9E88F5D3212C58DE00ECAD79 /* drums.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = drums.m4a; sourceTree = "<group>"; };
 		9E9D389A20DD6BD600500D82 /* SoundscapAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundscapAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9D389D20DD6BD600500D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E9D389F20DD6BD600500D82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,8 +111,6 @@
 				9EBA9E04219B377700C769B6 /* birdsong_mono.m4a */,
 				9EBA9DFC219B35A700C769B6 /* fountain_mix.m4a */,
 				9EBA9DFB219B35A700C769B6 /* road_mono.m4a */,
-				9E6496B52141736700B33DE4 /* synth.m4a */,
-				9E88F5D3212C58DE00ECAD79 /* drums.m4a */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -312,9 +306,7 @@
 				9E0FBCE421949A4000E35FC4 /* ML_icon.png in Resources */,
 				9EBA9DFF219B35A700C769B6 /* fountain_mix.m4a in Resources */,
 				9EBA9E80219C646400C769B6 /* car_red.png in Resources */,
-				9E88F5D4212C58DE00ECAD79 /* drums.m4a in Resources */,
 				9E79009A21ADB8EE006E4793 /* Default-568h@2x.png in Resources */,
-				9E6496B62141736700B33DE4 /* synth.m4a in Resources */,
 				9E9D38A820DD6BD600500D82 /* LaunchScreen.storyboard in Resources */,
 				9EBA9E7F219C646400C769B6 /* bird_green.png in Resources */,
 				9EBA9E09219C2C0500C769B6 /* AR_icon.png in Resources */,
