@@ -12,17 +12,16 @@ import AVFoundation
 
 class ARBinauralAudioSource: ARAudioNode {
     
-    // is there a way of having this set up in another object (??ARAudioEngine??) and access it from here?
-    fileprivate let mono = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
-    
-    // audio stuff
+    var loop = true
     let audioPlayer = AVAudioPlayerNode()
     fileprivate var audioBuffer: AVAudioPCMBuffer!
+    fileprivate let sceneWithCubeRoot = SCNScene(named: "cubeScene.scn")?.rootNode
+    fileprivate let mono = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 1)!
+    
     override var audioIsPlaying: Bool {
         didSet {
             self.isHidden = !audioIsPlaying
             
-            // former audioToggle() function
             if audioIsPlaying {
                 self.audioPlayer.scheduleBuffer(self.audioBuffer, at: nil, options: .loops, completionHandler: nil)
                 self.audioPlayer.play()
@@ -32,8 +31,6 @@ class ARBinauralAudioSource: ARAudioNode {
         }
     }
     
-    var loop = true
-    
     override var position: SCNVector3 {
         willSet {
             self.audioPlayer.position = AVAudio3DPoint(x: newValue.x, y: newValue.y, z: newValue.z)
@@ -41,10 +38,7 @@ class ARBinauralAudioSource: ARAudioNode {
         }
     }
     
-    fileprivate let sceneWithCubeRoot = SCNScene(named: "cubeScene.scn")?.rootNode
-//    var redMaterials = [SCNMaterial]()
-//    let greenMaterial = SCNMaterial()
-    
+
     init(atPosition position: SCNVector3, withAudioFile audioFilename: String, geometryName: String, geometryScaling: SCNVector3 = SCNVector3(1, 1, 1), eulerRotation: SCNVector3 = SCNVector3(0, 0, 0)) {
         
         super.init()
@@ -95,24 +89,6 @@ class ARBinauralAudioSource: ARAudioNode {
         
         self.audioBuffer = buffer
     }
-    
-    
-    //    func updatePosition(to position: SCNVector3) {
-    //        self.position = position
-    //        self.audioPlayer.position = AVAudio3DPoint(x: position.x, y: position.y, z: position.z)
-    //    }
-    
-//    func audioToggle() {
-//        if audioIsPlaying {
-//            //            self.geometry?.materials = self.redMaterials
-//            self.audioPlayer.stop()
-//        } else {
-//            //            self.geometry?.materials = [self.greenMaterial]
-//            self.audioPlayer.scheduleBuffer(self.audioBuffer, at: nil, options: .loops, completionHandler: nil)
-//            self.audioPlayer.play()
-//        }
-//        self.audioIsPlaying = !self.audioIsPlaying
-//    }
     
     
     required init?(coder aDecoder: NSCoder) {

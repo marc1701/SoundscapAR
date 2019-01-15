@@ -19,7 +19,6 @@ class ARAcousticBarrier: ARAudioNode {
         }
     }
     
-    // can we connect from outside the object directly into this filter?
     let lowPassFilter = AVAudioUnitEQ()
     var lowPassFilterParameters: AVAudioUnitEQFilterParameters!
     
@@ -140,7 +139,6 @@ class ARAcousticBarrier: ARAudioNode {
         // what will we ever use it for in adult life?
         let distanceOppositeSide = (self.position.x - camera.transform.columns.3.x)
         let distanceAdjacentSide = (self.position.z - camera.transform.columns.3.z)
-        
         
         let cameraToSelfAngle = atan2(-distanceOppositeSide, -distanceAdjacentSide)
         

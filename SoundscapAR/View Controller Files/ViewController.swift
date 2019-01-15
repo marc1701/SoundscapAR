@@ -183,6 +183,11 @@ class ViewController: UIViewController {
         self.lightNode.light = lightSource
         self.lightNode.position = SCNVector3(0, 0, 0)
         self.sceneView.scene.rootNode.addChildNode(lightNode)
+
+        // set initial images for object selection view
+        for (i, image) in self.objectImageViews.enumerated() {
+            image.image = self.redObjectImages[i]
+        }
     }
 
     
@@ -195,9 +200,6 @@ class ViewController: UIViewController {
         self.sceneView.delegate = self
         // start AR processing session
         self.sceneView.session.run(configuration)
-        
-//        self.sceneView.debugOptions = ARSCNDebugOptions.showWorldOrigin
-//        self.sceneView.debugOptions = ARSCNDebugOptions.showFeaturePoints
         
         // resume sessionStatus
         if self.planes.count > 0 { self.sessionStatus = .ready }
@@ -255,7 +257,6 @@ class ViewController: UIViewController {
     @IBAction func objectSelectionButtonPressed(_ sender: UIButton) {
         self.objectSelectionView.isHidden = !self.objectSelectionView.isHidden
         
-        // could I add in a feature that when a button is held the object will move on a vertical line above the spawn point?
         self.objectSpawnPointCrosshairs.isHidden = !self.objectSpawnPointCrosshairs.isHidden
         
         if self.objectSelectionView.isHidden {

@@ -41,7 +41,7 @@ extension ViewController {
         
         // connect nodes from barrierNode (too see if I can even get this to work on input)
         for audioNode in self.barrierNode.audioNodesToAttach { self.audioEngine.attach(audioNode) }
-        for audioMixer in self.barrierNode.mixersToConnect { self.audioEngine.connect(audioMixer, to: self.mainMixer, format: self.deviceInputFormat)}
+        for audioMixer in self.barrierNode.mixersToConnect { self.audioEngine.connect(audioMixer, to: self.mainMixer, format: self.deviceInputFormat) }
         
         self.audioEngine.connect(self.deviceInputDummy, to: self.barrierNode.connectionPointsForDeviceInput, fromBus: 0, format: self.deviceInputFormat)
         self.audioEngine.connect(self.barrierNode.lowPassFilter, to: self.barrierNode.connectionPointsForFilterOutput, fromBus: 0, format: self.deviceInputFormat)
